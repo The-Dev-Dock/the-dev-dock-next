@@ -76,7 +76,7 @@ const Contact = () => {
           info: { error: true, msg: data.error }
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         submitted: true,
         submitting: false,

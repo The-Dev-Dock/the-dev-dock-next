@@ -113,7 +113,7 @@ export default function Home() {
       particlesContainer.appendChild(particle);
       
       // Trigger reflow
-      particle.offsetHeight;
+      void particle.offsetHeight;
       particle.style.animation = 'float 2s ease-out forwards';
       
       // Remove particle after animation
@@ -134,7 +134,7 @@ export default function Home() {
       particlesContainer.appendChild(particle);
       
       // Trigger reflow
-      particle.offsetHeight;
+      void particle.offsetHeight;
       particle.style.animation = `scrollFloat ${1 + Math.random()}s ease-out forwards`;
       particle.style.setProperty('--direction', direction === 'down' ? '1' : '-1');
       
@@ -169,7 +169,7 @@ export default function Home() {
         particlesContainer.appendChild(particle);
         
         // Trigger reflow
-        particle.offsetHeight;
+        void particle.offsetHeight;
         particle.style.animation = `float 1s ease-out forwards, particleBurst ${1 + Math.random()}s ease-out forwards`;
         
         // Remove particle after animation
