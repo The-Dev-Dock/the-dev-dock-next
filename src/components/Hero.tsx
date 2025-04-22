@@ -20,8 +20,8 @@ export default function Hero() {
                   <span>Get Started</span>
                   <i className="fas fa-arrow-right"></i>
                 </a>
-                <a href="#services" className="cta-button secondary">
-                  <span>Learn More</span>
+                <a href="#roadmap" className="cta-button secondary">
+                  <span>View Roadmap</span>
                 </a>
               </div>
               <div className="hero-stats">
@@ -47,16 +47,16 @@ export default function Hero() {
                 <span>Web Development</span>
               </div>
               <div className="floating-card card-2">
-                <i className="fas fa-mobile-alt"></i>
-                <span>Mobile Apps</span>
+                <i className="fas fa-link"></i>
+                <span>Blockchain Development</span>
               </div>
               <div className="floating-card card-3">
-                <i className="fas fa-cloud"></i>
-                <span>Cloud Computing</span>
+                <i className="fas fa-server"></i>
+                <span>Dev-Ops</span>
               </div>
               <div className="floating-card card-4">
                 <i className="fas fa-robot"></i>
-                <span>AI & ML</span>
+                <span>Artificial Intelligence</span>
               </div>
             </div>
           </div>

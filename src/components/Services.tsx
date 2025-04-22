@@ -20,11 +20,11 @@ const Services = () => {
           <h3>1-1 Mentorship</h3>
           <p>Get personalized guidance from experienced professionals</p>
         </div>
-        <div className="service-card">
+        {/* <div className="service-card">
           <i className="fas fa-clock"></i>
           <h3>Night Live Classes</h3>
           <p>Flexible learning schedule with live interactive sessions</p>
-        </div>
+        </div> */}
         <div className="service-card">
           <i className="fas fa-comments"></i>
           <h3>Mock Interviews</h3>

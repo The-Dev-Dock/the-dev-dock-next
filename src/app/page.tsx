@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Features from '../components/Features';
+import Roadmap from '../components/Roadmap';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Background from '../components/Background';
@@ -51,7 +52,7 @@ export default function Home() {
       animateCursor();
       
       // Add hover effect to interactive elements
-      document.querySelectorAll('a, button, .service-card, .feature').forEach(element => {
+      document.querySelectorAll('a, button, .service-card, .feature, .roadmap-icon, .roadmap-content').forEach(element => {
         element.addEventListener('mouseenter', () => {
           cursor.classList.add('hover');
           cursorFollower.classList.add('hover');
@@ -225,12 +226,16 @@ export default function Home() {
         transition: all 0.5s ease;
       }
 
-      .service-card.animate, .feature.animate, .contact-form.animate {
+      .service-card.animate, .feature.animate, .roadmap-step.animate, .contact-form.animate {
         opacity: 1;
         transform: translateY(0);
       }
 
       .service-card {
+        transition: all 0.3s ease;
+      }
+      
+      .roadmap-step {
         transition: all 0.3s ease;
       }
 
@@ -272,7 +277,7 @@ export default function Home() {
     
     // Animate elements on scroll
     const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.service-card, .feature, .contact-form');
+      const elements = document.querySelectorAll('.service-card, .feature, .roadmap-step, .contact-form');
       
       elements.forEach(element => {
         const rect = element.getBoundingClientRect();
@@ -327,6 +332,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <Roadmap />
       <Features />
       <Contact />
       <Footer />
