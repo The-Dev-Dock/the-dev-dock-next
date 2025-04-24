@@ -43,7 +43,7 @@ const Features = () => {
               <div className="feature-number">02</div>
               <div className="feature-details">
                 <h3>Project-Based Learning Model</h3>
-                <p>You'll build real-world projects that tackle genuine business challenges. Our students graduate with portfolios featuring actual solutions to industry problems, not just classroom exercises.</p>
+                <p>You&apos;ll build real-world projects that tackle genuine business challenges. Our students graduate with portfolios featuring actual solutions to industry problems, not just classroom exercises.</p>
               </div>
             </div>
             
@@ -51,7 +51,7 @@ const Features = () => {
               <div className="feature-number">03</div>
               <div className="feature-details">
                 <h3>Elite Mentor Network</h3>
-                <p>Learn directly from senior developers and tech leaders currently working at top tech companies. Our mentors don't just teach; they guide you through the same challenges they face daily.</p>
+                <p>Learn directly from senior developers and tech leaders currently working at top tech companies. Our mentors don&apos;t just teach; they guide you through the same challenges they face daily.</p>
               </div>
             </div>
             
@@ -59,7 +59,7 @@ const Features = () => {
               <div className="feature-number">04</div>
               <div className="feature-details">
                 <h3>Guaranteed Placement Support</h3>
-                <p>Our dedicated career team works with you until you're hired. We maintain exclusive relationships with hiring partners who prioritize our graduates, giving you a clear advantage in the job market.</p>
+                <p>Our dedicated career team works with you until you&apos;re hired. We maintain exclusive relationships with hiring partners who prioritize our graduates, giving you a clear advantage in the job market.</p>
               </div>
             </div>
           </div>
