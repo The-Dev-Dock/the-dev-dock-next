@@ -16,7 +16,7 @@ export default function Hero() {
                 Get hands-on experience and launch your career in tech.
               </p>
               <div className="hero-buttons">
-                <a href="#contact" className="cta-button primary">
+                <a href="/plans" className="cta-button primary">
                   <span>Get Started</span>
                   <i className="fas fa-arrow-right"></i>
                 </a>
@@ -52,7 +52,7 @@ export default function Hero() {
               </div>
               <div className="floating-card card-3">
                 <i className="fas fa-server"></i>
-                <span>Dev-Ops</span>
+                <span> Dev - Ops & Cloud  </span>
               </div>
               <div className="floating-card card-4">
                 <i className="fas fa-robot"></i>
@@ -242,11 +242,19 @@ export default function Hero() {
             gap: 1rem;
             color: white;
             transition: all 0.3s ease;
+            z-index: 2;
+            width: auto;
           }
           
           .floating-card i {
             font-size: 1.5rem;
             color: var(--accent-color);
+            flex-shrink: 0;
+          }
+          
+          .floating-card span {
+            font-size: 1rem;
+            line-height: 1.2;
           }
           
           .card-1 {
@@ -326,7 +334,7 @@ export default function Hero() {
           
           @media (max-width: 768px) {
             .hero {
-              padding: 80px 20px;
+              padding: 130px 20px 120px;
             }
             
             .hero-title {
@@ -339,18 +347,176 @@ export default function Hero() {
             
             .hero-buttons {
               flex-direction: column;
+              width: 100%;
+            }
+            
+            .cta-button {
+              width: 100%;
+              justify-content: center;
             }
             
             .hero-stats {
               grid-template-columns: 1fr;
+              gap: 1rem;
+            }
+            
+            .stat-item {
+              padding: 1rem;
             }
             
             .hero-visual {
-              height: 300px;
+              height: 350px;
+              margin-top: 1rem;
             }
             
             .floating-card {
+              position: absolute;
+              background: rgba(255, 255, 255, 0.1);
+              width: auto;
               padding: 1rem;
+            }
+            
+            .floating-card i {
+              font-size: 1.2rem;
+            }
+            
+            .floating-card span {
+              font-size: 0.9rem;
+            }
+            
+            .card-1 {
+              top: 10%;
+              left: 10%;
+              right: auto;
+              max-width: 45%;
+            }
+            
+            .card-2 {
+              top: 10%;
+              right: 10%;
+              left: auto;
+              max-width: 45%;
+            }
+            
+            .card-3 {
+              bottom: 20%;
+              left: 10%;
+              right: auto;
+              max-width: 45%;
+            }
+            
+            .card-4 {
+              bottom: 20%;
+              right: 10%;
+              left: auto;
+              max-width: 45%;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .hero {
+              padding: 120px 15px 100px;
+              min-height: calc(100vh - 70px);
+              justify-content: center;
+            }
+            
+            .hero-title {
+              font-size: 2rem;
+            }
+            
+            .hero-badge {
+              margin-top: 1rem;
+            }
+            
+            .hero-badge span {
+              font-size: 0.8rem;
+            }
+            
+            .hero-description {
+              font-size: 1rem;
+            }
+            
+            .cta-button {
+              padding: 0.8rem 1.5rem;
+              font-size: 0.9rem;
+            }
+            
+            .hero-visual {
+              height: 320px;
+            }
+            
+            .floating-card {
+              padding: 0.8rem;
+            }
+            
+            .floating-card i {
+              font-size: 1rem;
+            }
+            
+            .floating-card span {
+              font-size: 0.8rem;
+            }
+            
+            .card-1 {
+              top: 8%;
+              left: 5%;
+              max-width: 42%;
+            }
+            
+            .card-2 {
+              top: 8%;
+              right: 5%;
+              max-width: 42%;
+            }
+            
+            .card-3 {
+              bottom: 15%;
+              left: 5%;
+              max-width: 42%;
+            }
+            
+            .card-4 {
+              bottom: 15%;
+              right: 5%;
+              max-width: 42%;
+            }
+          }
+          
+          @keyframes float {
+            0% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-15px);
+            }
+            100% {
+              transform: translateY(0px);
+            }
+          }
+          
+          @keyframes scrollLine {
+            0% {
+              height: 0;
+              opacity: 1;
+            }
+            50% {
+              height: 60px;
+              opacity: 1;
+            }
+            100% {
+              height: 60px;
+              opacity: 0;
+            }
+          }
+          
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
             }
           }
         `}</style>

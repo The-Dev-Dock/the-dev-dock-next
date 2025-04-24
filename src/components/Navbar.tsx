@@ -1,6 +1,30 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+    
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="logo">
           <div className="logo-icon">
             <div className="logo-symbol">D</div>
@@ -10,12 +34,31 @@ export default function Navbar() {
             <span className="logo-tagline">Code. Connect. Create.</span>
           </div>
         </div>
-        <div className="nav-links">
+        
+        <div className="nav-links desktop-menu">
           <a href="#home">Home</a>
           <a href="#services">Services</a>
           <a href="#features">Features</a>
           <a href="#roadmap">Roadmap</a>
+          <a href="/plans">Plans</a>
           <a href="#contact">Contact</a>
+        </div>
+        
+        <div className="mobile-menu-button" onClick={toggleMenu}>
+          <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        
+        <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+          <a href="#home" onClick={toggleMenu}>Home</a>
+          <a href="#services" onClick={toggleMenu}>Services</a>
+          <a href="#features" onClick={toggleMenu}>Features</a>
+          <a href="#roadmap" onClick={toggleMenu}>Roadmap</a>
+          <a href="/plans" onClick={toggleMenu}>Plans</a>
+          <a href="#contact" onClick={toggleMenu}>Contact</a>
         </div>
         
         <style jsx>{`
@@ -32,6 +75,12 @@ export default function Navbar() {
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             animation: slideDown 0.5s ease forwards;
+            transition: all 0.3s ease;
+          }
+          
+          .navbar.scrolled {
+            padding: 0.8rem 5%;
+            background: rgba(26, 26, 26, 0.98);
           }
           
           .logo {
@@ -113,7 +162,7 @@ export default function Navbar() {
             opacity: 1;
           }
           
-          .nav-links a {
+          .desktop-menu a {
             margin-left: 2rem;
             text-decoration: none;
             color: white;
@@ -122,7 +171,7 @@ export default function Navbar() {
             position: relative;
           }
           
-          .nav-links a::after {
+          .desktop-menu a::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -133,8 +182,48 @@ export default function Navbar() {
             transition: width 0.3s ease;
           }
           
-          .nav-links a:hover::after {
+          .desktop-menu a:hover::after {
             width: 100%;
+          }
+          
+          .mobile-menu-button {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+          }
+          
+          .hamburger {
+            width: 30px;
+            height: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          
+          .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+          }
+          
+          .hamburger.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+          }
+          
+          .hamburger.active span:nth-child(2) {
+            opacity: 0;
+          }
+          
+          .hamburger.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+          }
+          
+          .mobile-menu {
+            display: none;
           }
           
           @media (max-width: 768px) {
@@ -142,8 +231,79 @@ export default function Navbar() {
               padding: 1rem;
             }
             
-            .nav-links {
+            .desktop-menu {
               display: none;
+            }
+            
+            .mobile-menu-button {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            
+            .mobile-menu {
+              display: flex;
+              flex-direction: column;
+              position: fixed;
+              top: 0;
+              right: -100%;
+              width: 75%;
+              height: 100vh;
+              background: rgba(26, 26, 26, 0.98);
+              backdrop-filter: blur(10px);
+              box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+              transition: right 0.3s ease;
+              padding: 5rem 2rem 2rem;
+              z-index: 1000;
+            }
+            
+            .mobile-menu.open {
+              right: 0;
+            }
+            
+            .mobile-menu a {
+              color: white;
+              text-decoration: none;
+              padding: 1rem 0;
+              font-size: 1.2rem;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              transition: all 0.3s ease;
+            }
+            
+            .mobile-menu a:last-child {
+              border-bottom: none;
+            }
+            
+            .mobile-menu a:hover {
+              color: var(--primary-color);
+              padding-left: 0.5rem;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .logo {
+              padding: 0.4rem 0.8rem;
+            }
+            
+            .logo-icon {
+              width: 35px;
+              height: 35px;
+            }
+            
+            .logo-symbol {
+              font-size: 1.5rem;
+            }
+            
+            .logo-brand {
+              font-size: 1.3rem;
+            }
+            
+            .logo-tagline {
+              font-size: 0.6rem;
+            }
+            
+            .mobile-menu {
+              width: 85%;
             }
           }
         `}</style>
