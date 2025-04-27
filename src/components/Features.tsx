@@ -1,10 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Features = () => {
   return (
     <section id="features" className="features">
-      <div className="features-container">
+      <div className="section-header-wrapper">
         <h2>What Makes Us <span className="gradient-text">Unique</span></h2>
+      </div>
+      <div className="features-container">
         <p className="section-subtitle">Our approach goes beyond standard education to create future tech leaders</p>
         
         <div className="features-layout">
@@ -65,19 +68,11 @@ const Features = () => {
           </div>
         </div>
         
-        <div className="key-stats">
-          <div className="stat">
-            <div className="stat-value">100%</div>
-            <div className="stat-label">Job Placement Support</div>
-          </div>
-          <div className="stat">
-            <div className="stat-value">45+</div>
-            <div className="stat-label">Industry Partners</div>
-          </div>
-          <div className="stat">
-            <div className="stat-value">3x</div>
-            <div className="stat-label">Faster Career Growth</div>
-          </div>
+        <div className="view-courses-container">
+          <Link href="/plans" className="view-courses-button">
+            <span>View Courses</span>
+            <i className="fas fa-arrow-right"></i>
+          </Link>
         </div>
       </div>
       
@@ -94,6 +89,47 @@ const Features = () => {
           margin: 0 auto;
           position: relative;
           z-index: 2;
+        }
+        
+        .view-courses-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 4rem;
+          margin-bottom: 1rem;
+        }
+        
+        .view-courses-button {
+          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          padding: 0.8rem 1.8rem;
+          border-radius: 50px;
+          font-weight: 600;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          border: none;
+          color: white;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 1.05rem;
+        }
+        
+        .view-courses-button span {
+          font-weight: 700;
+          color: white;
+        }
+        
+        .view-courses-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .view-courses-button i {
+          transition: transform 0.3s ease;
+        }
+        
+        .view-courses-button:hover i {
+          transform: translateX(5px);
         }
         
         .features::before {
@@ -147,7 +183,7 @@ const Features = () => {
           display: grid;
           grid-template-columns: 0.8fr 1.2fr;
           gap: 4rem;
-          margin-bottom: 5rem;
+          margin-bottom: 3rem;
         }
         
         .features-image {
@@ -274,37 +310,6 @@ const Features = () => {
           color: var(--light-text);
           font-size: 1rem;
           line-height: 1.6;
-        }
-        
-        .key-stats {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-          max-width: 900px;
-          margin: 0 auto;
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 20px;
-          padding: 3rem 2rem;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .stat {
-          text-align: center;
-        }
-        
-        .stat-value {
-          font-size: 3rem;
-          font-weight: 700;
-          color: var(--primary-color);
-          margin-bottom: 0.5rem;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        
-        .stat-label {
-          color: white;
-          font-size: 1rem;
         }
         
         @keyframes float {
@@ -435,55 +440,22 @@ const Features = () => {
             font-size: 1.2rem;
           }
           
-          .key-stats {
-            padding: 2rem 1.5rem;
-            gap: 1.5rem;
+          .features-layout {
+            grid-template-columns: 1fr;
+            gap: 2rem;
           }
           
-          .stat-value {
-            font-size: 2.5rem;
+          .features-image {
+            display: none;
           }
           
-          .stat-label {
-            font-size: 0.9rem;
+          .view-courses-container {
+            margin-top: 3rem;
           }
           
-          .hexagon-grid {
-            width: 380px;
-            height: 370px;
-          }
-          
-          .hexagon {
-            width: 75px;
-            height: 85px;
-          }
-          
-          .hex1 {
-            top: 5%;
-          }
-          
-          .hex2 {
-            top: 45%;
-            left: 5%;
-          }
-          
-          .hex3 {
-            top: 45%;
-            right: 5%;
-          }
-          
-          .hex4 {
-            bottom: 5%;
-            left: 25%;
-          }
-          
-          .hex5 {
-            bottom: 5%;
-            right: 25%;
-          }
-          
-          .hexagon i {
-            font-size: 1.5rem;
+          .view-courses-button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
           }
         }
         
@@ -501,40 +473,6 @@ const Features = () => {
             margin-bottom: 2.5rem;
           }
           
-          .hexagon-grid {
-            width: 280px;
-            height: 320px;
-          }
-          
-          .hexagon {
-            width: 65px;
-            height: 75px;
-          }
-          
-          .hex2 {
-            top: 40%;
-            left: 0;
-          }
-          
-          .hex3 {
-            top: 40%;
-            right: 0;
-          }
-          
-          .hex4 {
-            bottom: 0;
-            left: 25%;
-          }
-          
-          .hex5 {
-            bottom: 0;
-            right: 25%;
-          }
-          
-          .hexagon i {
-            font-size: 1.3rem;
-          }
-          
           .feature-card {
             flex-direction: column;
             gap: 0.8rem;
@@ -545,14 +483,20 @@ const Features = () => {
             font-size: 1.8rem;
           }
           
-          .key-stats {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            padding: 2rem;
+          .view-courses-button {
+            padding: 0.7rem 1.3rem;
+            font-size: 0.9rem;
           }
-          
-          .stat-value {
-            font-size: 2.5rem;
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
       `}</style>

@@ -12,6 +12,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'The Dev Dock - Launch Your Tech Career',
   description: 'Launch your tech career with expert guidance, training, and mentorship programs.',
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+    shortcut: '/icon.png',
+  },
 };
 
 export default function RootLayout({

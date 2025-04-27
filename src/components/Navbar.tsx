@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,23 +27,22 @@ export default function Navbar() {
 
     return (
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="logo">
-          <div className="logo-icon">
-            <div className="logo-symbol">D</div>
-          </div>
-          <div className="logo-text">
-            <span className="logo-brand">The Dev Dock</span>
-            <span className="logo-tagline">Code. Connect. Create.</span>
-          </div>
-        </div>
+        <Link href="/" className="logo">
+          <Image 
+            src="/DevDock.png" 
+            alt="The Dev Dock" 
+            width={150} 
+            height={40} 
+            className="logo-image"
+          />
+        </Link>
         
         <div className="nav-links desktop-menu">
-          <a href="#home">Home</a>
           <a href="#services">Services</a>
-          <a href="#features">Features</a>
           <a href="#roadmap">Roadmap</a>
-          <a href="/plans">Plans</a>
-          <a href="#contact">Contact</a>
+          <a href="#features">Features</a>
+          <a href="/plans">Courses</a>
+          <a href="#contact" className="contact-button">Contact Us</a>
         </div>
         
         <div className="mobile-menu-button" onClick={toggleMenu}>
@@ -53,12 +54,11 @@ export default function Navbar() {
         </div>
         
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-          <a href="#home" onClick={toggleMenu}>Home</a>
           <a href="#services" onClick={toggleMenu}>Services</a>
-          <a href="#features" onClick={toggleMenu}>Features</a>
           <a href="#roadmap" onClick={toggleMenu}>Roadmap</a>
-          <a href="/plans" onClick={toggleMenu}>Plans</a>
-          <a href="#contact" onClick={toggleMenu}>Contact</a>
+          <a href="#features" onClick={toggleMenu}>Features</a>
+          <a href="/plans" onClick={toggleMenu}>Courses</a>
+          <a href="#contact" onClick={toggleMenu} className="contact-button">Contact Us</a>
         </div>
         
         <style jsx>{`
@@ -67,99 +67,40 @@ export default function Navbar() {
             top: 0;
             width: 100%;
             padding: 1rem 5%;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent;
+            backdrop-filter: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
             animation: slideDown 0.5s ease forwards;
             transition: all 0.3s ease;
           }
           
           .navbar.scrolled {
             padding: 0.8rem 5%;
-            background: rgba(26, 26, 26, 0.98);
+            background-color: #0B1215 !important;
+            background-color: rgba(11, 18, 21, 0.75) !important;
+            backdrop-filter: blur(1px) !important;
+            -webkit-backdrop-filter: blur(1px) !important;
+            box-shadow: none !important;
           }
           
           .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 50px;
-            border: 1px solid rgba(37, 99, 235, 0.2);
             transition: all 0.3s ease;
-          }
-          
-          .logo-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-          }
-          
-          .logo-symbol {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            position: relative;
-            z-index: 1;
-          }
-          
-          .logo-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-          }
-          
-          .logo:hover .logo-icon::before {
-            transform: translateX(100%);
-          }
-          
-          .logo-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          
-          .logo-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-          }
-          
-          .logo-tagline {
-            font-size: 0.7rem;
-            color: var(--accent-color);
-            opacity: 0.8;
-            letter-spacing: 1px;
+            text-decoration: none;
+            cursor: pointer;
           }
           
           .logo:hover {
-            background: rgba(37, 99, 235, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
           }
           
-          .logo:hover .logo-tagline {
-            opacity: 1;
+          .logo-image {
+            object-fit: contain;
           }
           
           .desktop-menu a {
@@ -171,7 +112,7 @@ export default function Navbar() {
             position: relative;
           }
           
-          .desktop-menu a::after {
+          .desktop-menu a:not(.contact-button)::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -182,8 +123,26 @@ export default function Navbar() {
             transition: width 0.3s ease;
           }
           
-          .desktop-menu a:hover::after {
+          .desktop-menu a:not(.contact-button):hover::after {
             width: 100%;
+          }
+          
+          .contact-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            margin-left: 2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: none;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          }
+          
+          .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
           }
           
           .mobile-menu-button {
@@ -270,36 +229,48 @@ export default function Navbar() {
               transition: all 0.3s ease;
             }
             
+            .mobile-menu a.contact-button {
+              background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+              padding: 0.8rem 1.5rem;
+              border-radius: 50px;
+              margin-top: 1.5rem;
+              text-align: center;
+              font-weight: 600;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+              border: none;
+              border-bottom: none;
+            }
+            
+            .mobile-menu a.contact-button:hover {
+              transform: translateY(-3px);
+              padding-left: 1.5rem;
+              color: white;
+              box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            }
+            
             .mobile-menu a:last-child {
               border-bottom: none;
             }
             
-            .mobile-menu a:hover {
+            .mobile-menu a:not(.contact-button):hover {
               color: var(--primary-color);
               padding-left: 0.5rem;
+            }
+
+            .logo-image {
+              width: 120px;
+              height: 32px;
             }
           }
           
           @media (max-width: 480px) {
             .logo {
-              padding: 0.4rem 0.8rem;
+              padding: 0;
             }
             
-            .logo-icon {
-              width: 35px;
-              height: 35px;
-            }
-            
-            .logo-symbol {
-              font-size: 1.5rem;
-            }
-            
-            .logo-brand {
-              font-size: 1.3rem;
-            }
-            
-            .logo-tagline {
-              font-size: 0.6rem;
+            .logo-image {
+              width: 100px;
+              height: 26px;
             }
             
             .mobile-menu {
@@ -309,4 +280,4 @@ export default function Navbar() {
         `}</style>
       </nav>
     );
-  }
+}

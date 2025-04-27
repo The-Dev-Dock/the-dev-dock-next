@@ -3,7 +3,9 @@ import React from 'react';
 const Services = () => {
   return (
     <section id="services" className="services">
-      <h2>Our Services</h2>
+      <div className="section-header-wrapper">
+        <h2>Our Services</h2>
+      </div>
       <div className="services-grid">
         <div className="service-card">
           <i className="fas fa-laptop-code"></i>
