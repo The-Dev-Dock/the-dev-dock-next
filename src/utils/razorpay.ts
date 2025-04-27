@@ -10,6 +10,14 @@ export interface PaymentDetails {
     collegeName: string;
   };
 }
+interface PaymentSuccessResponse {
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+  paymentId: string;
+ // if your server adds extra fields
+}
+
 
 const loadRazorpayScript = async (): Promise<boolean> => {
   return await loadScript('https://checkout.razorpay.com/v1/checkout.js');
@@ -17,8 +25,8 @@ const loadRazorpayScript = async (): Promise<boolean> => {
 
 export const initiatePayment = async (
   paymentDetails: PaymentDetails,
-  onSuccess: (response: any) => void,
-  onError: (error: any) => void
+  onSuccess: (response: PaymentSuccessResponse) => void,
+  onError: (error: unknown) => void,
 ) => {
   try {
     // Load Razorpay script
@@ -74,7 +82,7 @@ export const initiatePayment = async (
         name: paymentDetails.userDetails.name,
         contact: paymentDetails.userDetails.mobile,
       },
-      handler: function (response: any) {
+      handler: function (response: PaymentSuccessResponse) {
         // Handle successful payment
         verifyPayment(response, onSuccess, onError);
       },
@@ -88,20 +96,25 @@ export const initiatePayment = async (
       },
     };
     
-    // @ts-ignore - Razorpay is loaded via script
+    // @ts-expect-error - Razorpay is loaded via script
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
     
   } catch (error) {
     console.error('Payment initiation error:', error);
+    if (error instanceof Error) {
+      console.error(error.message);
+    } else {
+      console.error(error);
+    }
     onError(error);
   }
 };
 
 const verifyPayment = async (
-  razorpayResponse: any,
-  onSuccess: (response: any) => void,
-  onError: (error: any) => void
+  razorpayResponse: PaymentSuccessResponse,
+  onSuccess: (response: PaymentSuccessResponse) => void,
+  onError: (error: unknown) => void
 ) => {
   try {
     const response = await fetch('/api/payment/verify-payment', {
@@ -133,6 +146,11 @@ const verifyPayment = async (
     
   } catch (error) {
     console.error('Payment verification error:', error);
+    if (error instanceof Error) {
+      console.error(error.message);
+    } else {
+      console.error(error);
+    }
     onError(error);
   }
-}; 
+};

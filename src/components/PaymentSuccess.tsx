@@ -23,10 +23,7 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ paymentId, planTitle })
         <p>Thank you for purchasing <strong>{planTitle}</strong></p>
         <p className="payment-id">Payment ID: <span>{paymentId}</span></p>
         
-        <p className="success-message">
-          We've sent a confirmation email with all the details.
-          Our team will reach out to you shortly with next steps!
-        </p>
+        <p>We&apos;ve sent a confirmation email with all the details.</p>
         
         <div className="success-actions">
           <Link href="/" className="home-btn">
@@ -169,4 +166,4 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ paymentId, planTitle })
   );
 };
 
-export default PaymentSuccess; 
+export default PaymentSuccess;

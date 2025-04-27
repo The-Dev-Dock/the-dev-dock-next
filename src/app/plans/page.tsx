@@ -15,6 +15,13 @@ const PlansPage = () => {
     price: string;
   } | null>(null);
   
+  type FormData = {
+    name: string;
+    mobile: string;
+    age: string;
+    collegeName: string;
+  };
+
   const [paymentSuccess, setPaymentSuccess] = useState<{
     paymentId: string;
     planTitle: string;
@@ -108,7 +115,7 @@ const PlansPage = () => {
     setSelectedPlan(null);
   };
 
-  const handlePaymentFormSubmit = async (formData: any) => {
+  const handlePaymentFormSubmit = async (formData: FormData) => {
     if (!selectedPlan) return;
     
     setPaymentError(null);
@@ -133,18 +140,28 @@ const PlansPage = () => {
         (error) => {
           // Handle payment error
           console.error('Payment failed:', error);
-          setPaymentError(error.message || 'Payment failed. Please try again.');
+
+          if (error instanceof Error) {
+            setPaymentError(error.message || 'Payment failed. Please try again.');
+          } else {
+            setPaymentError('Payment failed. Please try again.');
+          }
         }
       );
-    } catch (error: any) {
-      console.error('Payment process error:', error);
-      setPaymentError(error.message || 'Payment process failed. Please try again.');
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Payment process error:', error);
+        setPaymentError(error.message || 'Payment process failed. Please try again.');
+      } else {
+        console.error('Unknown payment process error:', error);
+        setPaymentError('Payment process failed. Please try again.');
+      }
     }
   };
 
-  const handleSuccessClose = () => {
-    setPaymentSuccess(null);
-  };
+  // const handleSuccessClose = () => {
+  //   setPaymentSuccess(null);
+  // };
 
   return (
     <>

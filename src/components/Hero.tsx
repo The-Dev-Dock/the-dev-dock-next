@@ -13,8 +13,9 @@ export default function Hero() {
                   <br />With Tech Excellence
                 </h1>
                 <p className="hero-description">
-                Ready to build the future? 🚀 Join our elite program, learn directly from industry pros, and get real-world experience in Blockchain, AI, DevOps & Cloud, and Web Development. Let's launch your tech career together!
+                Ready to build the future? 🚀 Join our elite program, learn directly from industry pros, and get real-world experience in Blockchain, AI, DevOps & Cloud, and Web Development. Let&apos;s launch your tech career together!
                 </p>
+                {/* <p>Don&apos;t miss out on our exclusive plans!</p> */}
                 <div className="hero-buttons">
                   <a href="/plans" className="cta-button primary">
                     <span>View Courses</span>
