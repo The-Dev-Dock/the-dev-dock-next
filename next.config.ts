@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   env: {
     EMAIL_USER: process.env.EMAIL_USER,
     EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
+    RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+    RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID
   },
 };
 
