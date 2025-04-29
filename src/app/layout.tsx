@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: 'The Dev Dock - Launch Your Tech Career',
   description: 'Launch your tech career with expert guidance, training, and mentorship programs.',
   icons: {
-    icon: '/tabicon.png',
-    apple: '/tabicon.png',
-    shortcut: '/tabicon.png',
+    icon: '/assets/tabicon.png',
+    apple: '/assets/tabicon.png',
+    shortcut: '/assets/tabicon.png',
   },
 };
 

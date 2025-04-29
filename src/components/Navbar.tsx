@@ -29,7 +29,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <Link href="/" className="logo">
           <Image 
-            src="/DevDock.png" 
+            src="/assets/devdocklight.png" 
             alt="The Dev Dock" 
             width={150} 
             height={40} 
