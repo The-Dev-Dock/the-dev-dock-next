@@ -12,6 +12,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    console.log("RZP, verify-order:", process.env.RAZORPAY_KEY_ID);
 
     // Get secret key from environment variables
     const secret = process.env.RAZORPAY_KEY_SECRET || '';

@@ -29,6 +29,8 @@ export const initiatePayment = async (
   onError: (error: unknown) => void,
 ) => {
   try {
+    console.log("RZP, initiatePayment:", process.env.RAZORPAY_KEY_ID);
+
     // Load Razorpay script
     const scriptLoaded = await loadRazorpayScript();
     
@@ -117,6 +119,9 @@ const verifyPayment = async (
   onError: (error: unknown) => void
 ) => {
   try {
+
+    console.log("RZP, VerifyPayment:", process.env.RAZORPAY_KEY_ID);
+
     const response = await fetch('/api/payment/verify-payment', {
       method: 'POST',
       headers: {

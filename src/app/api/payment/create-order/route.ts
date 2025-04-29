@@ -12,7 +12,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-
+    console.log("RZP, create-order:", process.env.RAZORPAY_KEY_ID);
+    
     // Initialize Razorpay instance with your API keys
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID || '',
