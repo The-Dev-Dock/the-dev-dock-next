@@ -33,13 +33,14 @@ const PlansPage = () => {
   const plans = [
     {
       title: "Web Development",
-      price: "2 INR",
+      price: "2999 INR",
       duration: "2 months",
       features: [
         "Full-stack web development curriculum",
         "HTML, CSS, JavaScript fundamentals",
-        "React.js and Node.js",
-        "Database integration (MongoDB)",
+        "Frontend Frameworks",
+        "Deployment and hosting",
+        "Live project development",
         "Free mock interview session",
         "Profile building workshop",
         "Industry mentorship",
@@ -50,14 +51,15 @@ const PlansPage = () => {
     },
     {
       title: "Blockchain Development",
-      price: "3 INR",
+      price: "2999 INR",
       duration: "2 months",
       features: [
-        "Blockchain fundamentals",
+        "Blockchain concepts",
         "Smart contract development",
         "Solidity programming",
         "DApp development",
         "Web3.js integration",
+        "Live project development",
         "Free mock interview session",
         "Profile building workshop",
         "Industry mentorship",

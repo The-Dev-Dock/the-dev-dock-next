@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: 'The Dev Dock - Launch Your Tech Career',
   description: 'Launch your tech career with expert guidance, training, and mentorship programs.',
   icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
-    shortcut: '/icon.png',
+    icon: '/tabicon.png',
+    apple: '/tabicon.png',
+    shortcut: '/tabicon.png',
   },
 };
 
@@ -28,7 +28,19 @@ export default function RootLayout({
     <html lang="en" className={poppins.className}>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" href="tabicon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "The Dev Dock",
+              url: "https://www.thedevdock.com",
+              logo: "https://www.thedevdock.com/assets/appicon.png",
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
