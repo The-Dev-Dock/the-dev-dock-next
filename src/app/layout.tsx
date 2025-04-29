@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'The Dev Dock',
     images: [
       {
-        url: 'https://www.thedevdock.com/assets/devDock.png',
+        url: 'https://www.thedevdock.com/assets/appicon.png',
         width: 1200,
         height: 630,
         alt: 'The Dev Dock - Tech Career Platform',
