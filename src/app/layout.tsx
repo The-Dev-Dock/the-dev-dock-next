@@ -59,8 +59,6 @@ export const metadata: Metadata = {
   },
   
   // Additional metadata
-  themeColor: '#3b82f6', // Assuming a blue theme color, adjust as needed
-  viewport: 'width=device-width, initial-scale=1',
   robots: {
     index: true,
     follow: true,
