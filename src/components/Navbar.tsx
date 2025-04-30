@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
     
     useEffect(() => {
       const handleScroll = () => {
@@ -25,6 +28,27 @@ export default function Navbar() {
       setIsMenuOpen(!isMenuOpen);
     };
 
+    // Function to handle navigation
+    const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+      if (!isHomePage && sectionId.startsWith('#')) {
+        e.preventDefault();
+        window.location.href = `/${sectionId}`;
+      } else if (isHomePage && sectionId.startsWith('#')) {
+        // Allow smooth scrolling on home page
+        e.preventDefault();
+        const section = document.querySelector(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      // For non-anchor links or non-homepage, let normal navigation happen
+      
+      // Close mobile menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
     return (
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <Link href="/" className="logo">
@@ -38,11 +62,36 @@ export default function Navbar() {
         </Link>
         
         <div className="nav-links desktop-menu">
-          <a href="#services">Services</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#features">Features</a>
-          <a href="/plans">Internship Programs</a>
-          <a href="#contact" className="contact-button">Contact Us</a>
+          <a 
+            href={isHomePage ? "#services" : "/#services"} 
+            onClick={(e) => handleNavigation(e, "#services")}
+          >
+            Services
+          </a>
+          <a 
+            href={isHomePage ? "#roadmap" : "/#roadmap"} 
+            onClick={(e) => handleNavigation(e, "#roadmap")}
+          >
+            Roadmap
+          </a>
+          <a 
+            href={isHomePage ? "#features" : "/#features"} 
+            onClick={(e) => handleNavigation(e, "#features")}
+          >
+            Features
+          </a>
+          <a 
+            href="/plans"
+          >
+            Internship Programs
+          </a>
+          <a 
+            href={isHomePage ? "#contact" : "/#contact"} 
+            onClick={(e) => handleNavigation(e, "#contact")}
+            className="contact-button"
+          >
+            Contact Us
+          </a>
         </div>
         
         <div className="mobile-menu-button" onClick={toggleMenu}>
@@ -54,11 +103,37 @@ export default function Navbar() {
         </div>
         
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-          <a href="#services" onClick={toggleMenu}>Services</a>
-          <a href="#roadmap" onClick={toggleMenu}>Roadmap</a>
-          <a href="#features" onClick={toggleMenu}>Features</a>
-          <a href="/plans" onClick={toggleMenu}>Internship Programs</a>
-          <a href="#contact" onClick={toggleMenu} className="contact-button">Contact Us</a>
+          <a 
+            href={isHomePage ? "#services" : "/#services"} 
+            onClick={(e) => handleNavigation(e, "#services")}
+          >
+            Services
+          </a>
+          <a 
+            href={isHomePage ? "#roadmap" : "/#roadmap"} 
+            onClick={(e) => handleNavigation(e, "#roadmap")}
+          >
+            Roadmap
+          </a>
+          <a 
+            href={isHomePage ? "#features" : "/#features"} 
+            onClick={(e) => handleNavigation(e, "#features")}
+          >
+            Features
+          </a>
+          <a 
+            href="/plans"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Internship Programs
+          </a>
+          <a 
+            href={isHomePage ? "#contact" : "/#contact"} 
+            onClick={(e) => handleNavigation(e, "#contact")}
+            className="contact-button"
+          >
+            Contact Us
+          </a>
         </div>
         
         <style jsx>{`
