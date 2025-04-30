@@ -2,10 +2,26 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "export", 
+  // output: "export", // Removing this line to allow API routes to work
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    domains: ['thedevdock.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thedevdock.com',
+        pathname: '**',
+      },
+    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/api/favicon',
+        permanent: true,
+      },
+    ];
   },
   env: {
     EMAIL_USER: process.env.EMAIL_USER,

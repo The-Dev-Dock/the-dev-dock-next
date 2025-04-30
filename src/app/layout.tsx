@@ -48,14 +48,14 @@ export const metadata: Metadata = {
   // Icons
   icons: {
     icon: [
-      { url: 'https://www.thedevdock.com/assets/tabicon.png' },
-      { url: 'https://www.thedevdock.com/assets/appicon.png', sizes: '16x16', type: 'image/png' },
-      { url: 'https://www.thedevdock.com/assets/appicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico' },
+      { url: '/assets/appicon.png', sizes: '16x16', type: 'image/png' },
+      { url: '/assets/appicon.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: [
-      { url: 'https://www.thedevdock.com/assets/tabicon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/assets/tabicon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: 'https://www.thedevdock.com/assets/tabicon.png',
+    shortcut: '/favicon.ico',
   },
   
   // Additional metadata
@@ -83,7 +83,7 @@ export default function RootLayout({
     <html lang="en" className={poppins.className}>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link rel="icon" href="assets/tabicon.png" />
+        <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
