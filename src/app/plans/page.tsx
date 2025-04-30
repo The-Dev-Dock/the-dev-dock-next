@@ -29,11 +29,17 @@ const PlansPage = () => {
   
   const [paymentError, setPaymentError] = useState<string | null>(null);
   
+  // Get prices from environment variables with fallbacks
+  const webDevPrice = process.env.NEXT_PUBLIC_WEB_DEV_PRICE || "2999 INR";
+  const blockchainPrice = process.env.NEXT_PUBLIC_BLOCKCHAIN_PRICE || "2999 INR";
+  const aiDevComingStatus = process.env.NEXT_PUBLIC_AI_DEV_STATUS || "Coming Soon";
+  const devOpsComingStatus = process.env.NEXT_PUBLIC_DEVOPS_STATUS || "Coming Soon";
+  
   // Define the plans data
   const plans = [
     {
       title: "Web Development",
-      price: "2999 INR",
+      price: webDevPrice,
       duration: "2 months",
       features: [
         "Full-stack web development curriculum",
@@ -51,7 +57,7 @@ const PlansPage = () => {
     },
     {
       title: "Blockchain Development",
-      price: "2999 INR",
+      price: blockchainPrice,
       duration: "2 months",
       features: [
         "Blockchain concepts",
@@ -71,7 +77,7 @@ const PlansPage = () => {
     },
     {
       title: "AI Development",
-      price: "Coming Soon",
+      price: aiDevComingStatus,
       duration: "2 months",
       features: [
         "Machine Learning fundamentals",
@@ -90,7 +96,7 @@ const PlansPage = () => {
     },
     {
       title: "DevOps & Cloud",
-      price: "Coming Soon",
+      price: devOpsComingStatus,
       duration: "2 months",
       features: [
         "CI/CD pipeline setup",
@@ -172,7 +178,7 @@ const PlansPage = () => {
       
       <main className="plans-page">
         <section className="plans-hero">
-          <h1>Our <span className="gradient-text">Courses</span></h1>
+          <h1>Our <span className="gradient-text">Internship Programs</span></h1>
           <p>Accelerate your tech career with our specialized 2-month programs</p>
         </section>
         
@@ -255,65 +261,57 @@ const PlansPage = () => {
       
       <style jsx>{`
         .plans-page {
-          padding-top: 100px;
-          min-height: 100vh;
+          padding-top: 120px;
+          color: white;
         }
         
         .plans-hero {
           text-align: center;
-          padding: 3rem 1rem;
+          padding: 2rem 5%;
+          margin-bottom: 3rem;
         }
         
         .plans-hero h1 {
           font-size: 3rem;
           margin-bottom: 1rem;
-          color: white;
-          position: relative;
-          display: inline-block;
-        }
-        
-        .plans-hero h1::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80px;
-          height: 4px;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          border-radius: 10px;
         }
         
         .plans-hero p {
-          font-size: 1.3rem;
-          color: #ccc;
-          max-width: 700px;
-          margin: 2rem auto 0;
+          font-size: 1.2rem;
+          color: var(--light-text);
+          max-width: 600px;
+          margin: 0 auto;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         
         .plans-container {
-          max-width: 1400px;
-          margin: 2rem auto;
-          padding: 0 2rem 6rem;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 5% 5rem;
         }
         
         .plans-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 2.5rem;
-          margin-top: 1.5rem;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
         }
         
         .plan-card {
-          background: rgba(20, 25, 35, 0.5);
-          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 15px;
           overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: all 0.3s ease;
           position: relative;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
           height: 100%;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-          z-index: 1;
+          display: flex;
+          flex-direction: column;
         }
         
         .card-overlay {
@@ -322,58 +320,51 @@ const PlansPage = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(45deg, rgba(40, 50, 80, 0.1), rgba(20, 25, 35, 0));
-          z-index: -1;
+          background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+          pointer-events: none;
         }
         
         .plan-card:hover {
-          transform: translateY(-15px);
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-          border-color: rgba(var(--primary-color-rgb), 0.3);
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+          border-color: rgba(37, 99, 235, 0.3);
         }
         
         .plan-content {
-          padding: 30px;
+          padding: 2rem;
           display: flex;
           flex-direction: column;
           height: 100%;
+          position: relative;
+          z-index: 1;
         }
         
-        .plan-content h2 {
+        .plan-card h2 {
           font-size: 1.8rem;
+          margin-bottom: 1rem;
           color: white;
-          margin-bottom: 0.5rem;
-          text-align: center;
-          font-weight: 600;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
         }
         
         .plan-price {
+          margin-bottom: 2rem;
           display: flex;
           align-items: baseline;
-          justify-content: center;
-          margin: 0.5rem 0 1.5rem;
         }
         
         .price {
-          font-size: 2.2rem;
+          font-size: 1.8rem;
           font-weight: 700;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: var(--primary-color);
         }
         
         .duration {
           font-size: 1rem;
-          color: #ccc;
-          margin-left: 0.5rem;
+          color: var(--light-text);
+          margin-left: 0.3rem;
         }
         
         .plan-features {
-          padding: 1rem 0;
-          flex-grow: 1;
+          flex: 1;
         }
         
         .plan-features ul {
@@ -383,263 +374,153 @@ const PlansPage = () => {
         }
         
         .plan-features li {
-          color: #eee;
-          padding: 0.7rem 0;
           display: flex;
           align-items: flex-start;
-          font-size: 1rem;
+          margin-bottom: 1rem;
+          color: var(--light-text);
         }
         
-        .plan-features li i {
+        .plan-features i {
           color: var(--primary-color);
-          margin-right: 0.8rem;
-          font-size: 1rem;
-          flex-shrink: 0;
-        }
-        
-        .plan-features li span {
-          flex: 1;
+          margin-right: 0.5rem;
+          margin-top: 0.3rem;
         }
         
         .plan-footer {
-          padding: 1.5rem 0 0;
-          text-align: center;
+          margin-top: 2rem;
         }
         
         .plan-cta {
           width: 100%;
+          padding: 1rem;
+          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.7rem;
-          padding: 0.9rem 1.8rem;
-          border-radius: 50px;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          color: white;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          border: none;
-          cursor: pointer;
-          font-size: 1.05rem;
-          letter-spacing: 0.5px;
+          gap: 0.5rem;
         }
         
-        .plan-cta:hover {
-          background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.4);
+        .plan-cta:hover:not(:disabled) {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .plan-cta i {
           transition: transform 0.3s ease;
         }
         
-        .plan-cta:hover i {
+        .plan-cta:hover:not(:disabled) i {
           transform: translateX(5px);
         }
         
-        /* Featured plan styling */
         .featured-plan {
-          transform: scale(1.05);
-          border: 1px solid rgba(var(--primary-color-rgb), 0.3);
-          box-shadow: 0 10px 30px rgba(var(--primary-color-rgb), 0.15);
+          border: 2px solid var(--primary-color);
+          transform: scale(1.03);
           z-index: 2;
-          background: rgba(30, 35, 45, 0.8);
         }
         
         .featured-plan::before {
-          content: 'MOST POPULAR';
+          content: 'Most Popular';
           position: absolute;
           top: 15px;
-          right: 0;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          right: 15px;
+          background: var(--primary-color);
           color: white;
-          font-size: 0.75rem;
-          font-weight: bold;
-          padding: 0.5rem 1.5rem;
-          border-radius: 50px 0 0 50px;
-          letter-spacing: 1px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          font-size: 0.8rem;
+          font-weight: 600;
+          padding: 0.3rem 0.8rem;
+          border-radius: 50px;
           z-index: 3;
         }
         
         .featured-plan:hover {
-          transform: translateY(-15px) scale(1.05);
+          transform: translateY(-10px) scale(1.03);
         }
         
-        /* Coming soon plan styling */
         .coming-soon-plan {
-          opacity: 0.8;
-          background: rgba(20, 25, 35, 0.3);
+          opacity: 0.75;
         }
         
         .coming-soon-plan::after {
-          content: 'Coming Soon';
+          content: '';
           position: absolute;
-          top: 15px;
-          right: 15px;
-          background: linear-gradient(135deg, #888, #444);
-          padding: 0.4rem 1rem;
-          border-radius: 30px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: white;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          z-index: 3;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.1);
+          pointer-events: none;
+          z-index: 1;
         }
         
         .coming-soon-plan .plan-cta {
-          background: linear-gradient(135deg, #888, #444);
+          background: rgba(37, 99, 235, 0.3);
           cursor: not-allowed;
-        }
-        
-        .coming-soon-plan .plan-cta:hover {
-          transform: none;
-          box-shadow: none;
-          background: linear-gradient(135deg, #888, #444);
         }
         
         .payment-error {
           position: fixed;
           bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
+          right: 20px;
+          background: rgba(220, 38, 38, 0.9);
+          color: white;
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
           z-index: 1000;
-          width: 90%;
-          max-width: 500px;
+          animation: slideIn 0.3s ease forwards;
         }
         
         .payment-error-content {
-          background: rgba(229, 62, 62, 0.9);
-          color: white;
-          padding: 1rem 1.5rem;
-          border-radius: 8px;
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          gap: 1rem;
         }
         
-        .payment-error-content p {
-          margin: 0;
-          font-size: 1rem;
-        }
-        
-        .payment-error-content button {
-          background: rgba(255, 255, 255, 0.2);
+        .payment-error button {
+          background: white;
+          color: rgb(220, 38, 38);
           border: none;
-          padding: 0.4rem 0.8rem;
           border-radius: 4px;
-          color: white;
-          font-weight: 600;
+          padding: 0.3rem 0.8rem;
           cursor: pointer;
-          margin-left: 1rem;
-          transition: all 0.2s ease;
+          font-weight: 600;
         }
         
-        .payment-error-content button:hover {
-          background: rgba(255, 255, 255, 0.3);
-        }
-        
-        @media (max-width: 1200px) {
-          .plans-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        @keyframes slideIn {
+          from {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
           }
         }
         
         @media (max-width: 768px) {
-          .plans-page {
-            padding-top: 80px;
-          }
-          
-          .plans-hero {
-            padding: 2rem 1rem;
-          }
-          
           .plans-hero h1 {
             font-size: 2.5rem;
           }
           
-          .plans-hero p {
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-          }
-          
-          .plans-container {
-            padding: 0 1.5rem 4rem;
-            margin-top: 1rem;
-          }
-          
           .plans-grid {
             grid-template-columns: 1fr;
-            gap: 4rem;
-            margin-top: 2.5rem;
+            max-width: 400px;
+            margin: 0 auto;
           }
           
           .featured-plan {
             transform: scale(1);
-            order: -1;
           }
           
           .featured-plan:hover {
-            transform: translateY(-15px) scale(1);
-          }
-          
-          .plan-content {
-            padding: 25px;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .plans-page {
-            padding-top: 70px;
-          }
-          
-          .plans-hero {
-            padding: 1.5rem 1rem;
-          }
-          
-          .plans-hero h1 {
-            font-size: 2.2rem;
-          }
-          
-          .plans-hero h1::after {
-            width: 60px;
-          }
-          
-          .plans-hero p {
-            font-size: 1rem;
-          }
-          
-          .plan-content h2 {
-            font-size: 1.5rem;
-          }
-          
-          .price {
-            font-size: 2rem;
-          }
-          
-          .plan-features li {
-            font-size: 0.95rem;
-            padding: 0.6rem 0;
-          }
-          
-          .plan-cta {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-          }
-          
-          .payment-error-content {
-            padding: 0.8rem 1rem;
-            flex-direction: column;
-            text-align: center;
-          }
-          
-          .payment-error-content button {
-            margin-left: 0;
-            margin-top: 0.8rem;
+            transform: translateY(-10px) scale(1);
           }
         }
       `}</style>

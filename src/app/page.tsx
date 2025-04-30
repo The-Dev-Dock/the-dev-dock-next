@@ -13,93 +13,11 @@ import Background from '../components/Background';
 export default function Home() {
   // Initialize all animations and effects
   useEffect(() => {
-    // Custom cursor effect
-    const cursor = document.querySelector('.cursor') as HTMLElement;
-    const cursorFollower = document.querySelector('.cursor-follower') as HTMLElement;
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-    let followerX = 0, followerY = 0;
-    let lastScrollY = window.scrollY;
+    // Check if the device is mobile
+    const isMobile = window.innerWidth <= 768 || 
+                     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    if (cursor && cursorFollower) {
-      // Update cursor position
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        // Add particle effect on mouse move
-        createParticle(e.clientX, e.clientY);
-      });
-      
-      // Smooth cursor animation
-      function animateCursor() {
-        // Main cursor
-        cursorX += (mouseX - cursorX) * 0.2;
-        cursorY += (mouseY - cursorY) * 0.2;
-        cursor.style.left = `${cursorX}px`;
-        cursor.style.top = `${cursorY}px`;
-    
-        // Follower cursor
-        followerX += (mouseX - followerX) * 0.1;
-        followerY += (mouseY - followerY) * 0.1;
-        cursorFollower.style.left = `${followerX}px`;
-        cursorFollower.style.top = `${followerY}px`;
-    
-        requestAnimationFrame(animateCursor);
-      }
-      
-      // Start cursor animation
-      animateCursor();
-      
-      // Add hover effect to interactive elements
-      document.querySelectorAll('a, button, .service-card, .feature, .roadmap-icon, .roadmap-content').forEach(element => {
-        element.addEventListener('mouseenter', () => {
-          cursor.classList.add('hover');
-          cursorFollower.classList.add('hover');
-          createParticleBurst(element as HTMLElement);
-        });
-        
-        element.addEventListener('mouseleave', () => {
-          cursor.classList.remove('hover');
-          cursorFollower.classList.remove('hover');
-        });
-      });
-    }
-    
-    // Scroll-based particle effect and UI updates
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-      const scrollSpeed = Math.abs(scrollY - lastScrollY);
-      
-      // Create particles based on scroll speed
-      if (scrollSpeed > 5) {
-        const particleCount = Math.min(Math.floor(scrollSpeed / 5), 10);
-        for (let i = 0; i < particleCount; i++) {
-          const x = Math.random() * window.innerWidth;
-          const y = Math.random() * window.innerHeight;
-          createScrollParticle(x, y, scrollDirection);
-        }
-      }
-
-      // Hide "Scroll to Explore" when user has scrolled down
-      const heroScroll = document.querySelector('.hero-scroll') as HTMLElement;
-      if (heroScroll) {
-        if (scrollY > 100) {
-          heroScroll.style.opacity = '0';
-          heroScroll.style.visibility = 'hidden';
-        } else {
-          heroScroll.style.opacity = '1';
-          heroScroll.style.visibility = 'visible';
-        }
-      }
-      
-      lastScrollY = scrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    // Particle effects
+    // Particle effects functions
     function createParticle(x: number, y: number) {
       const particlesContainer = document.querySelector('.particles');
       if (!particlesContainer) return;
@@ -177,6 +95,95 @@ export default function Home() {
         setTimeout(() => particle.remove(), 2000);
       }
     }
+    
+    let lastScrollY = window.scrollY;
+    
+    // Custom cursor effect - only initialize on non-mobile devices
+    if (!isMobile) {
+      const cursor = document.querySelector('.cursor') as HTMLElement;
+      const cursorFollower = document.querySelector('.cursor-follower') as HTMLElement;
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+      let followerX = 0, followerY = 0;
+      
+      if (cursor && cursorFollower) {
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          
+          // Add particle effect on mouse move
+          createParticle(e.clientX, e.clientY);
+        });
+        
+        // Smooth cursor animation
+        function animateCursor() {
+          // Main cursor
+          cursorX += (mouseX - cursorX) * 0.2;
+          cursorY += (mouseY - cursorY) * 0.2;
+          cursor.style.left = `${cursorX}px`;
+          cursor.style.top = `${cursorY}px`;
+      
+          // Follower cursor
+          followerX += (mouseX - followerX) * 0.1;
+          followerY += (mouseY - followerY) * 0.1;
+          cursorFollower.style.left = `${followerX}px`;
+          cursorFollower.style.top = `${followerY}px`;
+      
+          requestAnimationFrame(animateCursor);
+        }
+        
+        // Start cursor animation
+        animateCursor();
+        
+        // Add hover effect to interactive elements
+        document.querySelectorAll('a, button, .service-card, .feature, .roadmap-icon, .roadmap-content').forEach(element => {
+          element.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+            cursorFollower.classList.add('hover');
+            createParticleBurst(element as HTMLElement);
+          });
+          
+          element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+            cursorFollower.classList.remove('hover');
+          });
+        });
+      }
+    }
+    
+    // Scroll-based particle effect and UI updates
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+      const scrollSpeed = Math.abs(scrollY - lastScrollY);
+      
+      // Create particles based on scroll speed (only for non-mobile)
+      if (!isMobile && scrollSpeed > 5) {
+        const particleCount = Math.min(Math.floor(scrollSpeed / 5), 10);
+        for (let i = 0; i < particleCount; i++) {
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          createScrollParticle(x, y, scrollDirection);
+        }
+      }
+
+      // Hide "Scroll to Explore" when user has scrolled down
+      const heroScroll = document.querySelector('.hero-scroll') as HTMLElement;
+      if (heroScroll) {
+        if (scrollY > 100) {
+          heroScroll.style.opacity = '0';
+          heroScroll.style.visibility = 'hidden';
+        } else {
+          heroScroll.style.opacity = '1';
+          heroScroll.style.visibility = 'visible';
+        }
+      }
+      
+      lastScrollY = scrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll);
     
     // Add dynamic styles for animations
     const style = document.createElement('style');

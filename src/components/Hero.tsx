@@ -18,7 +18,7 @@ export default function Hero() {
                 {/* <p>Don&apos;t miss out on our exclusive plans!</p> */}
                 <div className="hero-buttons">
                   <a href="/plans" className="cta-button primary">
-                    <span>View Courses</span>
+                    <span>Internship Programs</span>
                     <i className="fas fa-arrow-right"></i>
                   </a>
                   <a href="#roadmap" className="cta-button secondary">

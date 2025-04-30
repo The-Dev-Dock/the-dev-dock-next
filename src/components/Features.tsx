@@ -70,7 +70,7 @@ const Features = () => {
         
         <div className="view-courses-container">
           <Link href="/plans" className="view-courses-button">
-            <span>View Courses</span>
+            <span>View Internship Programs</span>
             <i className="fas fa-arrow-right"></i>
           </Link>
         </div>

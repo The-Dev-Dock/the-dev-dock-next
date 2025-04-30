@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Dev Dock",
+  "alternateName": "DevDock",
+  "url": "https://www.thedevdock.com",
+  "logo": "https://www.thedevdock.com/assets/devDock.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "support@thedevdock.com"
+  },
+  "sameAs": [
+    "https://twitter.com/thedevdock",
+    "https://www.linkedin.com/company/thedevdock",
+    "https://www.instagram.com/thedevdock"
+  ],
+  "description": "Launch your tech career with expert guidance, training, and mentorship programs. Discover coding bootcamps, career services, and developer resources.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "name": "Tech Career Internship Programs",
+    "description": "Specialized tech training programs including Web Development, Blockchain Development, AI, and DevOps",
+    "priceCurrency": "INR",
+    "lowPrice": "1999",
+    "highPrice": "1999",
+    "offerCount": "4"
+  }
+} 

@@ -33,6 +33,13 @@
     border-color: var(--accent-color);
 }
 
+/* Hide custom cursor on mobile devices */
+@media (max-width: 768px) {
+    .cursor, .cursor-follower {
+        display: none !important;
+    }
+}
+
 /* Futuristic Background */
 .futuristic-background {
     position: fixed;

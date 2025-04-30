@@ -41,7 +41,7 @@ export default function Navbar() {
           <a href="#services">Services</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#features">Features</a>
-          <a href="/plans">Courses</a>
+          <a href="/plans">Internship Programs</a>
           <a href="#contact" className="contact-button">Contact Us</a>
         </div>
         
@@ -57,7 +57,7 @@ export default function Navbar() {
           <a href="#services" onClick={toggleMenu}>Services</a>
           <a href="#roadmap" onClick={toggleMenu}>Roadmap</a>
           <a href="#features" onClick={toggleMenu}>Features</a>
-          <a href="/plans" onClick={toggleMenu}>Courses</a>
+          <a href="/plans" onClick={toggleMenu}>Internship Programs</a>
           <a href="#contact" onClick={toggleMenu} className="contact-button">Contact Us</a>
         </div>
         
