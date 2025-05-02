@@ -125,7 +125,12 @@ const PlansPage = () => {
 
   // Redirect to Google Form with plan name
   const handlePlanSelect = (plan: { title: string; price: string }) => {
-    window.open(`${enrollmentFormUrl}?plan=${encodeURIComponent(plan.title)}`, '_blank');
+    // Simple direct URL construction with proper encoding
+    const formUrl = enrollmentFormUrl.trim();
+    const planParam = encodeURIComponent(plan.title);
+    const separator = formUrl.includes('?') ? '&' : '?';
+    const fullUrl = `${formUrl}${separator}plan=${planParam}`;
+    window.open(fullUrl, '_blank', 'noopener,noreferrer');
   };
 
   // Commented out for future use but preserved
