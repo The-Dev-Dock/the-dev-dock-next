@@ -1,15 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Background from '../../components/Background';
 import Contact from '../../components/Contact';
-import PaymentForm from '../../components/PaymentForm';
-import PaymentSuccess from '../../components/PaymentSuccess';
-import { initiatePayment, PaymentDetails } from '../../utils/razorpay';
+// Payment components preserved but commented out for future use
+// import PaymentForm from '../../components/PaymentForm';
+// import PaymentSuccess from '../../components/PaymentSuccess';
+// import { initiatePayment, PaymentDetails } from '../../utils/razorpay';
 
 const PlansPage = () => {
+  // Get enrollment form URL from environment variables with fallback
+  const enrollmentFormUrl = process.env.NEXT_PUBLIC_ENROLLMENT_FORM_URL || "https://forms.google.com/your-form-url";
+  
+  // Commented out for future use but preserved
+  /*
   const [selectedPlan, setSelectedPlan] = useState<{
     title: string;
     price: string;
@@ -28,6 +35,7 @@ const PlansPage = () => {
   } | null>(null);
   
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  */
   
   // Get prices from environment variables with fallbacks
   const webDevPrice = process.env.NEXT_PUBLIC_WEB_DEV_PRICE || "2999 INR";
@@ -53,7 +61,7 @@ const PlansPage = () => {
         "Certificate of completion"
       ],
       icon: "fas fa-code",
-      cta: "Enroll Now"
+      cta: "Apply Now"
     },
     {
       title: "Blockchain Development",
@@ -72,7 +80,7 @@ const PlansPage = () => {
         "Certificate of completion"
       ],
       icon: "fas fa-link",
-      cta: "Enroll Now",
+      cta: "Apply Now",
       featured: true
     },
     {
@@ -115,10 +123,13 @@ const PlansPage = () => {
     }
   ];
 
+  // Redirect to Google Form with plan name
   const handlePlanSelect = (plan: { title: string; price: string }) => {
-    setSelectedPlan(plan);
+    window.open(`${enrollmentFormUrl}?plan=${encodeURIComponent(plan.title)}`, '_blank');
   };
 
+  // Commented out for future use but preserved
+  /*
   const handlePaymentFormClose = () => {
     setSelectedPlan(null);
   };
@@ -170,6 +181,7 @@ const PlansPage = () => {
   // const handleSuccessClose = () => {
   //   setPaymentSuccess(null);
   // };
+  */
 
   return (
     <>
@@ -192,10 +204,14 @@ const PlansPage = () => {
                 <div className="card-overlay"></div>
                 <div className="plan-content">
                   <h2>{plan.title}</h2>
+                  
+                  {/* Price details commented out for future use */}
+                  {/*
                   <div className="plan-price">
                     <span className="price">{plan.price}</span>
                     {!plan.comingSoon && <span className="duration">/{plan.duration}</span>}
                   </div>
+                  */}
                   
                   <div className="plan-features">
                     <ul>
@@ -224,7 +240,8 @@ const PlansPage = () => {
           </div>
         </section>
         
-        {/* Payment error notification */}
+        {/* Payment components commented out for future use but preserved */}
+        {/*
         {paymentError && (
           <div className="payment-error">
             <div className="payment-error-content">
@@ -234,7 +251,6 @@ const PlansPage = () => {
           </div>
         )}
         
-        {/* Payment form modal */}
         {selectedPlan && (
           <PaymentForm
             planTitle={selectedPlan.title}
@@ -244,13 +260,13 @@ const PlansPage = () => {
           />
         )}
         
-        {/* Payment success modal */}
         {paymentSuccess && (
           <PaymentSuccess
             paymentId={paymentSuccess.paymentId}
             planTitle={paymentSuccess.planTitle}
           />
         )}
+        */}
         
         <div id="contact">
           <Contact />
