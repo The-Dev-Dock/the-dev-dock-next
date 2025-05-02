@@ -13,7 +13,7 @@ import Contact from '../../components/Contact';
 
 const PlansPage = () => {
   // Get enrollment form URL from environment variables with fallback
-  const enrollmentFormUrl = process.env.NEXT_PUBLIC_ENROLLMENT_FORM_URL || "https://forms.google.com/your-form-url";
+  const enrollmentFormUrl = process.env.NEXT_PUBLIC_ENROLLMENT_FORM_URL || "https://forms.gle/guVi1weoQQ4kJyqr9";
   
   // Commented out for future use but preserved
   /*
@@ -37,97 +37,24 @@ const PlansPage = () => {
   const [paymentError, setPaymentError] = useState<string | null>(null);
   */
   
-  // Get prices from environment variables with fallbacks
-  const webDevPrice = process.env.NEXT_PUBLIC_WEB_DEV_PRICE || "2999 INR";
-  const blockchainPrice = process.env.NEXT_PUBLIC_BLOCKCHAIN_PRICE || "2999 INR";
-  const aiDevComingStatus = process.env.NEXT_PUBLIC_AI_DEV_STATUS || "Coming Soon";
-  const devOpsComingStatus = process.env.NEXT_PUBLIC_DEVOPS_STATUS || "Coming Soon";
-  
-  // Define the plans data
-  const plans = [
-    {
-      title: "Web Development",
-      price: webDevPrice,
-      duration: "2 months",
-      features: [
-        "Full-stack web development curriculum",
-        "HTML, CSS, JavaScript fundamentals",
-        "Frontend Frameworks",
-        "Deployment and hosting",
-        "Live project development",
-        "Free mock interview session",
-        "Profile building workshop",
-        "Industry mentorship",
-        "Certificate of completion"
-      ],
-      icon: "fas fa-code",
-      cta: "Apply Now"
-    },
-    {
-      title: "Blockchain Development",
-      price: blockchainPrice,
-      duration: "2 months",
-      features: [
-        "Blockchain concepts",
-        "Smart contract development",
-        "Solidity programming",
-        "DApp development",
-        "Web3.js integration",
-        "Live project development",
-        "Free mock interview session",
-        "Profile building workshop",
-        "Industry mentorship",
-        "Certificate of completion"
-      ],
-      icon: "fas fa-link",
-      cta: "Apply Now",
-      featured: true
-    },
-    {
-      title: "AI Development",
-      price: aiDevComingStatus,
-      duration: "2 months",
-      features: [
-        "Machine Learning fundamentals",
-        "Neural Networks",
-        "Computer Vision",
-        "Natural Language Processing",
-        "Python for AI",
-        "Free mock interview session",
-        "Profile building workshop",
-        "Industry mentorship",
-        "Certificate of completion"
-      ],
-      icon: "fas fa-robot",
-      cta: "Join Waitlist",
-      comingSoon: true
-    },
-    {
-      title: "DevOps & Cloud",
-      price: devOpsComingStatus,
-      duration: "2 months",
-      features: [
-        "CI/CD pipeline setup",
-        "Docker and Kubernetes",
-        "Cloud platforms (AWS/Azure)",
-        "Infrastructure as Code",
-        "Monitoring and logging",
-        "Free mock interview session",
-        "Profile building workshop",
-        "Industry mentorship",
-        "Certificate of completion"
-      ],
-      icon: "fas fa-server",
-      cta: "Join Waitlist",
-      comingSoon: true
-    }
+  // Define the career program features
+  const programFeatures = [
+    "1:1 Mentorship from working developers",
+    "Real-world project portfolio building",
+    "Personalized skill growth plan",
+    "Live internship simulation",
+    "Mock interviews with industry experts",
+    "Resume and LinkedIn optimization",
+    "Interview preparation sessions",
+    "Job application strategy",
+    "Career support until placement"
   ];
 
-  // Redirect to Google Form with plan name
-  const handlePlanSelect = (plan: { title: string; price: string }) => {
+  // Redirect to Google Form
+  const handleProgramSelect = () => {
     // Simple direct URL construction with proper encoding
     const formUrl = enrollmentFormUrl.trim();
-    const planParam = encodeURIComponent(plan.title);
+    const planParam = encodeURIComponent("Career Development Program");
     const separator = formUrl.includes('?') ? '&' : '?';
     const fullUrl = `${formUrl}${separator}plan=${planParam}`;
     window.open(fullUrl, '_blank', 'noopener,noreferrer');
@@ -195,53 +122,120 @@ const PlansPage = () => {
       
       <main className="plans-page">
         <section className="plans-hero">
-          <h1>Our <span className="gradient-text">Internship Programs</span></h1>
-          <p>Accelerate your tech career with our specialized 2-month programs</p>
+          <h1>The Dev Dock <span className="gradient-text">LaunchPad</span></h1>
+          <p>Not another course. A career movement.</p>
+          <div className="hero-description">
+            <p>Your invitation into a private community of working developers who will train, mentor, and guide you until you land your first tech job.</p>
+          </div>
+          <div className="value-props">
+            <div className="value-prop">
+              <i className="fas fa-user-friends"></i>
+              <span>1:1 Mentorship</span>
+            </div>
+            <div className="value-prop">
+              <i className="fas fa-laptop-code"></i>
+              <span>Live Internship Projects</span>
+            </div>
+            <div className="value-prop">
+              <i className="fas fa-brain"></i>
+              <span>Mock Interviews</span>
+            </div>
+            <div className="value-prop">
+              <i className="fas fa-tools"></i>
+              <span>Skill Growth Plan</span>
+            </div>
+            <div className="value-prop">
+              <i className="fas fa-gift"></i>
+              <span>Career Support</span>
+            </div>
+          </div>
+        </section>
+        
+        <section className="how-it-works">
+          <h2>One Program. Multiple <span className="gradient-text">Outcomes</span>.</h2>
+          <p>After a short interview, you&apos;ll be placed in one of our curated career tracks, each led by industry experts.</p>
+          <div className="features-grid">
+            <div className="feature">
+              <div className="feature-icon">
+                <i className="fas fa-project-diagram"></i>
+              </div>
+              <h3>Build real project portfolio</h3>
+              <p>Work on actual projects that simulate real-world development environments</p>
+            </div>
+            <div className="feature">
+              <div className="feature-icon">
+                <i className="fas fa-users"></i>
+              </div>
+              <h3>Learn from working devs</h3>
+              <p>Get mentored by developers who are actively working in the industry</p>
+            </div>
+            <div className="feature">
+              <div className="feature-icon">
+                <i className="fas fa-briefcase"></i>
+              </div>
+              <h3>Land your first tech job</h3>
+              <p>Graduate with the skills, portfolio, and confidence to pass interviews</p>
+            </div>
+          </div>
         </section>
         
         <section className="plans-container">
-          <div className="plans-grid">
-            {plans.map((plan, index) => (
-              <div 
-                key={index} 
-                className={`plan-card ${plan.featured ? 'featured-plan' : ''} ${plan.comingSoon ? 'coming-soon-plan' : ''}`}
-              >
-                <div className="card-overlay"></div>
-                <div className="plan-content">
-                  <h2>{plan.title}</h2>
-                  
-                  {/* Price details commented out for future use */}
-                  {/*
-                  <div className="plan-price">
-                    <span className="price">{plan.price}</span>
-                    {!plan.comingSoon && <span className="duration">/{plan.duration}</span>}
+          <h2>Career <span className="gradient-text">Development Program</span></h2>
+          <p>Get selected through a short interview, and join our upcoming batch.</p>
+          
+          <div className="single-plan-card">
+            <div className="card-overlay"></div>
+            <div className="plan-content">
+              {/* <h2>Career Development Program</h2> */}
+              <p className="program-description">A comprehensive program designed to transform you from a student to a job-ready developer through real-world experience, expert mentorship, and personalized career guidance.</p>
+              
+              <div className="plan-features">
+                <ul>
+                  {programFeatures.map((feature, featureIndex) => (
+                    <li key={featureIndex}>
+                      <i className="fas fa-check-circle"></i>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="specializations">
+                <h3>Available Specializations</h3>
+                <div className="specialization-badges">
+                  <div className="specialization-badge">
+                    <i className="fas fa-code"></i>
+                    <span>Full Stack</span>
                   </div>
-                  */}
-                  
-                  <div className="plan-features">
-                    <ul>
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex}>
-                          <i className="fas fa-check-circle"></i>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="specialization-badge">
+                    <i className="fas fa-link"></i>
+                    <span>Blockchain</span>
                   </div>
-                  
-                  <div className="plan-footer">
-                    <button 
-                      className="cta-button plan-cta"
-                      onClick={() => plan.comingSoon ? null : handlePlanSelect({ title: plan.title, price: plan.price })}
-                      disabled={plan.comingSoon}
-                    >
-                      <span>{plan.cta}</span>
-                      <i className={plan.comingSoon ? "fas fa-bell" : "fas fa-arrow-right"}></i>
-                    </button>
+                  <div className="specialization-badge">
+                    <i className="fas fa-robot"></i>
+                    <span>AI</span>
+                  </div>
+                  <div className="specialization-badge">
+                    <i className="fas fa-server"></i>
+                    <span>DevOps</span>
                   </div>
                 </div>
               </div>
-            ))}
+              
+              <div className="plan-footer">
+                <button 
+                  className="cta-button plan-cta"
+                  onClick={handleProgramSelect}
+                >
+                  <span>Apply Now</span>
+                  <i className="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="plans-note">
+            <p>🚫 No mass lectures. ✅ Real community. Real support. Real results.</p>
           </div>
         </section>
         
@@ -300,8 +294,103 @@ const PlansPage = () => {
         .plans-hero p {
           font-size: 1.2rem;
           color: var(--light-text);
-          max-width: 600px;
+          max-width: 800px;
           margin: 0 auto;
+        }
+        
+        .hero-description {
+          margin: 1.5rem auto;
+          max-width: 800px;
+        }
+        
+        .value-props {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.5rem;
+          margin: 2rem auto;
+          max-width: 900px;
+        }
+        
+        .value-prop {
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.05);
+          padding: 0.8rem 1.2rem;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .value-prop i {
+          color: var(--primary-color);
+          margin-right: 0.5rem;
+        }
+        
+        .how-it-works {
+          text-align: center;
+          padding: 3rem 5%;
+          background: rgba(0, 0, 0, 0.2);
+          margin-bottom: 3rem;
+        }
+        
+        .how-it-works h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+        
+        .how-it-works p {
+          font-size: 1.2rem;
+          color: var(--light-text);
+          max-width: 700px;
+          margin: 0 auto 2rem;
+        }
+        
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .feature {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 15px;
+          padding: 2rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+          transform: translateY(-10px);
+          border-color: rgba(37, 99, 235, 0.3);
+        }
+        
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background: rgba(37, 99, 235, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1.5rem;
+        }
+        
+        .feature-icon i {
+          font-size: 1.5rem;
+          color: var(--primary-color);
+        }
+        
+        .feature h3 {
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+        }
+        
+        .feature p {
+          color: var(--light-text);
+          font-size: 1rem;
+          line-height: 1.5;
         }
         
         .gradient-text {
@@ -314,25 +403,80 @@ const PlansPage = () => {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 5% 5rem;
+          text-align: center;
         }
         
-        .plans-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 2rem;
+        .plans-container h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
         }
         
-        .plan-card {
+        .plans-container > p {
+          margin-bottom: 2.5rem;
+          color: var(--light-text);
+          font-size: 1.2rem;
+        }
+        
+        .single-plan-card {
           background: rgba(255, 255, 255, 0.05);
           border-radius: 15px;
           overflow: hidden;
           transition: all 0.3s ease;
           position: relative;
           backdrop-filter: blur(10px);
+          border: 2px solid var(--primary-color);
+          max-width: 800px;
+          margin: 0 auto;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .program-description {
+          color: #ccc;
+          font-size: 1.1rem;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+        
+        .specializations {
+          margin: 2rem 0;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          height: 100%;
+        }
+        
+        .specializations h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+          color: white;
+        }
+        
+        .specialization-badges {
           display: flex;
-          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+        
+        .specialization-badge {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(37, 99, 235, 0.1);
+          padding: 0.7rem 1.2rem;
+          border-radius: 50px;
+          border: 1px solid rgba(37, 99, 235, 0.2);
+          transition: all 0.3s ease;
+        }
+        
+        .specialization-badge:hover {
+          transform: translateY(-5px);
+          background: rgba(37, 99, 235, 0.2);
+        }
+        
+        .specialization-badge i {
+          color: var(--primary-color);
+          font-size: 1.1rem;
         }
         
         .card-overlay {
@@ -345,43 +489,25 @@ const PlansPage = () => {
           pointer-events: none;
         }
         
-        .plan-card:hover {
+        .single-plan-card:hover {
           transform: translateY(-10px);
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-          border-color: rgba(37, 99, 235, 0.3);
         }
         
         .plan-content {
-          padding: 2rem;
+          padding: 2.5rem;
           display: flex;
           flex-direction: column;
-          height: 100%;
           position: relative;
           z-index: 1;
         }
         
-        .plan-card h2 {
-          font-size: 1.8rem;
+        .plan-content h2 {
+          font-size: 2.2rem;
           margin-bottom: 1rem;
           color: white;
-        }
-        
-        .plan-price {
-          margin-bottom: 2rem;
-          display: flex;
-          align-items: baseline;
-        }
-        
-        .price {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--primary-color);
-        }
-        
-        .duration {
-          font-size: 1rem;
-          color: var(--light-text);
-          margin-left: 0.3rem;
+          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         
         .plan-features {
@@ -441,49 +567,17 @@ const PlansPage = () => {
           transform: translateX(5px);
         }
         
-        .featured-plan {
-          border: 2px solid var(--primary-color);
-          transform: scale(1.03);
-          z-index: 2;
+        .plans-note {
+          margin-top: 2.5rem;
+          padding: 1rem;
+          border-radius: 8px;
+          background: rgba(37, 99, 235, 0.1);
+          border: 1px solid rgba(37, 99, 235, 0.2);
         }
         
-        .featured-plan::before {
-          content: 'Most Popular';
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          background: var(--primary-color);
-          color: white;
-          font-size: 0.8rem;
+        .plans-note p {
+          font-size: 1.1rem;
           font-weight: 600;
-          padding: 0.3rem 0.8rem;
-          border-radius: 50px;
-          z-index: 3;
-        }
-        
-        .featured-plan:hover {
-          transform: translateY(-10px) scale(1.03);
-        }
-        
-        .coming-soon-plan {
-          opacity: 0.75;
-        }
-        
-        .coming-soon-plan::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.1);
-          pointer-events: none;
-          z-index: 1;
-        }
-        
-        .coming-soon-plan .plan-cta {
-          background: rgba(37, 99, 235, 0.3);
-          cursor: not-allowed;
         }
         
         .payment-error {
@@ -530,18 +624,32 @@ const PlansPage = () => {
             font-size: 2.5rem;
           }
           
-          .plans-grid {
-            grid-template-columns: 1fr;
-            max-width: 400px;
-            margin: 0 auto;
+          .value-props {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
           }
           
-          .featured-plan {
-            transform: scale(1);
+          .how-it-works h2,
+          .plans-container h2 {
+            font-size: 2rem;
           }
           
-          .featured-plan:hover {
-            transform: translateY(-10px) scale(1);
+          .plan-content {
+            padding: 1.5rem;
+          }
+          
+          .program-description {
+            font-size: 1rem;
+          }
+          
+          .specialization-badges {
+            gap: 0.8rem;
+          }
+          
+          .specialization-badge {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
           }
         }
       `}</style>

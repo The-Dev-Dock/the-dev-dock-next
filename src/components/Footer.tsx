@@ -7,6 +7,18 @@ const Footer = () => {
         <div className="footer-section">
           <h3>The Dev Dock</h3>
           <p>Launching careers through expert guidance</p>
+          <div className="contact-info">
+            <div className="contact-item">
+              <i className="fas fa-phone-alt"></i>
+              <a href="tel:+919243804369">+91 9243 804 369</a>
+            </div>
+            <div className="contact-item">
+              <i className="fab fa-whatsapp"></i>
+              <a href="https://wa.me/919243804369" target="_blank" rel="noopener noreferrer">
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
@@ -70,6 +82,36 @@ const Footer = () => {
           margin-bottom: 1rem;
           font-size: 1rem;
           line-height: 1.5;
+        }
+        
+        .contact-info {
+          margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0.8rem;
+        }
+        
+        .contact-item i {
+          color: var(--primary-color);
+          margin-right: 0.8rem;
+          font-size: 1.1rem;
+        }
+        
+        .contact-item a {
+          color: #ccc;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: inline-block !important;
+          padding-left: 0 !important;
+        }
+        
+        .contact-item a:hover {
+          color: white;
+          padding-left: 0 !important;
+          transform: translateX(5px);
         }
         
         .footer-section a {
@@ -137,6 +179,10 @@ const Footer = () => {
           .social-links a {
             font-size: 1.3rem;
           }
+          
+          .contact-item i {
+            font-size: 1rem;
+          }
         }
         
         @media (max-width: 480px) {
@@ -157,6 +203,14 @@ const Footer = () => {
           .footer-section h3::after {
             left: 50%;
             transform: translateX(-50%);
+          }
+          
+          .contact-info {
+            margin-top: 1rem;
+          }
+          
+          .contact-item {
+            justify-content: center;
           }
           
           .social-links {

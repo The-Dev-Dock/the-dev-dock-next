@@ -1,165 +1,64 @@
 'use client';
 
-import React, { useState } from 'react';
-
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  interest: string;
-  message: string;
-}
-
-interface StatusState {
-  submitted: boolean;
-  submitting: boolean;
-  info: {
-    error: boolean;
-    msg: string | null;
-  };
-}
+import React from 'react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    phone: '',
-    interest: '',
-    message: ''
-  });
+  // Get enrollment form URL from environment variables with fallback
+  const enrollmentFormUrl = process.env.NEXT_PUBLIC_ENROLLMENT_FORM_URL || "https://forms.gle/guVi1weoQQ4kJyqr9";
   
-  const [status, setStatus] = useState<StatusState>({
-    submitted: false,
-    submitting: false,
-    info: { error: false, msg: null }
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus(prevStatus => ({ ...prevStatus, submitting: true }));
-
-    try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      const data = await res.json();
-      
-      if (res.status === 200) {
-        setStatus({
-          submitted: true,
-          submitting: false,
-          info: { error: false, msg: data.message }
-        });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          interest: '',
-          message: ''
-        });
-      } else {
-        setStatus({
-          submitted: true,
-          submitting: false,
-          info: { error: true, msg: data.error }
-        });
-      }
-    } catch {
-      setStatus({
-        submitted: true,
-        submitting: false,
-        info: { error: true, msg: 'An error occurred. Please try again later.' }
-      });
-    }
-  };
-
   return (
     <section id="contact" className="contact">
       <div className="contact-container">
         <h2>Get in Touch</h2>
-        <p className="contact-description">Ready to start your journey? Contact us today!</p>
+        <p className="contact-description">Ready to start your journey? Here&apos;s how to reach us:</p>
         
-        {status.info.msg && (
-          <div className={`form-message ${status.info.error ? 'error' : 'success'}`}>
-            {status.info.msg}
-          </div>
-        )}
-        
-        <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Your Name" 
-              required 
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Your Email" 
-              required 
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <input 
-              type="tel" 
-              name="phone" 
-              placeholder="Your Phone" 
-              required 
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <select 
-              name="interest" 
-              required 
-              value={formData.interest}
-              onChange={handleChange}
+        <div className="contact-options">
+          <div className="contact-option">
+            <div className="option-icon">
+              <i className="fas fa-file-alt"></i>
+            </div>
+            <h3>Fill Our Application Form</h3>
+            <p>Apply for The Dev Dock LaunchPad by filling out our Google Form</p>
+            <a 
+              href={enrollmentFormUrl}
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="option-button"
             >
-              <option value="">Select Your Interest</option>
-              <option value="internship">Internship Program</option>
-              <option value="training">Training Program</option>
-              <option value="mentorship">1-1 Mentorship</option>
-              <option value="mock-interview">Mock Interviews</option>
-              <option value="other">Other</option>
-            </select>
+              Apply Now
+              <i className="fas fa-arrow-right"></i>
+            </a>
           </div>
-          <div className="form-group">
-            <textarea 
-              name="message" 
-              placeholder="Your Message" 
-              required 
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
+          
+          <div className="contact-option">
+            <div className="option-icon">
+              <i className="fas fa-phone-alt"></i>
+            </div>
+            <h3>Call Us</h3>
+            <p>Have questions? Give us a call directly</p>
+            <a href="tel:+919243804369" className="option-button">
+              +91 9243 804 369
+              <i className="fas fa-arrow-right"></i>
+            </a>
           </div>
-          <button 
-            type="submit" 
-            className="submit-button" 
-            disabled={status.submitting}
-          >
-            {status.submitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
+          
+          <div className="contact-option">
+            <div className="option-icon">
+              <i className="fab fa-whatsapp"></i>
+            </div>
+            <h3>WhatsApp Us</h3>
+            <p>Message us on WhatsApp for quick responses</p>
+            <a 
+              href="https://wa.me/919243804369" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="option-button whatsapp"
+            >
+              Message on WhatsApp
+              <i className="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
       </div>
       
       <style jsx>{`
@@ -193,67 +92,98 @@ const Contact = () => {
         
         .contact-description {
           color: #ccc;
-          margin-bottom: 2rem;
+          margin-bottom: 3rem;
           font-size: 1.1rem;
         }
         
         .contact-container {
-          max-width: 600px;
+          max-width: 1000px;
           margin: 0 auto;
         }
         
-        .contact-form {
+        .contact-options {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+        
+        .contact-option {
           background: rgba(255, 255, 255, 0.05);
           padding: 2rem;
           border-radius: 15px;
+          text-align: center;
+          transition: all 0.3s ease;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           transform: translateY(20px);
           opacity: 0;
           animation: fadeInUp 0.5s ease forwards;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .form-group {
-          margin-bottom: 1.5rem;
-          position: relative;
+        .contact-option:nth-child(2) {
+          animation-delay: 0.1s;
         }
         
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-          width: 100%;
-          padding: 0.8rem;
-          background: rgba(255, 255, 255, 0.05);
-          border: 2px solid rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
-          font-size: 1rem;
-          transition: all 0.3s ease;
-          color: white;
+        .contact-option:nth-child(3) {
+          animation-delay: 0.2s;
         }
         
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-          border-color: var(--primary-color);
-          outline: none;
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        .contact-option:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
           background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(37, 99, 235, 0.3);
         }
         
-        .form-group textarea {
-          height: 150px;
-          resize: vertical;
+        .option-icon {
+          width: 70px;
+          height: 70px;
+          background: rgba(37, 99, 235, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.5rem;
+          border: 1px solid rgba(37, 99, 235, 0.2);
+          transition: all 0.3s ease;
         }
         
-        .submit-button {
-          width: 100%;
-          padding: 1rem;
-          background: var(--primary-color);
+        .option-icon i {
+          font-size: 1.8rem;
+          color: var(--primary-color);
+        }
+        
+        .contact-option:hover .option-icon {
+          background: rgba(37, 99, 235, 0.2);
+          transform: scale(1.1);
+        }
+        
+        .contact-option h3 {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
           color: white;
-          border: none;
-          border-radius: 50px;
+        }
+        
+        .contact-option p {
+          color: #ccc;
+          margin-bottom: 1.5rem;
           font-size: 1rem;
+          line-height: 1.5;
+          flex-grow: 1;
+        }
+        
+        .option-button {
+          padding: 0.8rem 1.5rem;
+          background: rgba(37, 99, 235, 0.2);
+          color: white;
+          border: 1px solid rgba(37, 99, 235, 0.3);
+          border-radius: 50px;
+          font-size: 0.9rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -261,50 +191,31 @@ const Contact = () => {
           justify-content: center;
           align-items: center;
           gap: 0.5rem;
+          width: 100%;
+          text-decoration: none;
         }
         
-        .submit-button:hover {
-          background: rgba(37, 99, 235, 0.8);
+        .option-button:hover {
+          background: var(--primary-color);
           transform: translateY(-3px);
           box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
         }
         
-        .submit-button:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-          transform: none;
-          box-shadow: none;
+        .option-button.whatsapp {
+          background: rgba(37, 211, 102, 0.2);
+          border: 1px solid rgba(37, 211, 102, 0.3);
         }
         
-        .form-message {
-          padding: 1rem;
-          margin-bottom: 1.5rem;
-          border-radius: 8px;
-          text-align: center;
-          animation: fadeIn 0.5s ease;
+        .option-button.whatsapp:hover {
+          background: #25d366;
         }
         
-        .form-message.success {
-          background: rgba(46, 213, 115, 0.15);
-          border: 1px solid rgba(46, 213, 115, 0.3);
-          color: #2ed573;
+        .option-button i {
+          transition: transform 0.3s ease;
         }
         
-        .form-message.error {
-          background: rgba(255, 71, 87, 0.15);
-          border: 1px solid rgba(255, 71, 87, 0.3);
-          color: #ff4757;
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        .option-button:hover i {
+          transform: translateX(5px);
         }
         
         @keyframes fadeInUp {
@@ -329,30 +240,40 @@ const Contact = () => {
           
           .contact-description {
             font-size: 1rem;
+            margin-bottom: 2rem;
           }
           
-          .contact-form {
+          .contact-options {
+            gap: 1.5rem;
+          }
+          
+          .contact-option {
             padding: 1.5rem;
           }
           
-          .form-group {
+          .option-icon {
+            width: 60px;
+            height: 60px;
             margin-bottom: 1.2rem;
           }
           
-          .form-group input,
-          .form-group select,
-          .form-group textarea {
-            padding: 0.7rem;
-            font-size: 0.95rem;
+          .option-icon i {
+            font-size: 1.5rem;
           }
           
-          .form-group textarea {
-            height: 120px;
+          .contact-option h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
           }
           
-          .submit-button {
-            padding: 0.9rem;
+          .contact-option p {
             font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+          }
+          
+          .option-button {
+            padding: 0.7rem 1.3rem;
+            font-size: 0.85rem;
           }
         }
         
@@ -371,28 +292,38 @@ const Contact = () => {
             margin-bottom: 1.5rem;
           }
           
-          .contact-form {
+          .contact-options {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+          }
+          
+          .contact-option {
             padding: 1.2rem;
           }
           
-          .form-group {
+          .option-icon {
+            width: 50px;
+            height: 50px;
             margin-bottom: 1rem;
           }
           
-          .form-group input,
-          .form-group select,
-          .form-group textarea {
-            padding: 0.6rem;
-            font-size: 0.9rem;
+          .option-icon i {
+            font-size: 1.3rem;
           }
           
-          .form-group textarea {
-            height: 100px;
+          .contact-option h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
           }
           
-          .submit-button {
-            padding: 0.8rem;
+          .contact-option p {
             font-size: 0.9rem;
+            margin-bottom: 1rem;
+          }
+          
+          .option-button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
           }
         }
       `}</style>

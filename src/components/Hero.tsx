@@ -5,24 +5,37 @@ export default function Hero() {
           <div className="hero-container">
             <div className="hero-left">
               <div className="hero-content">
-                {/* <div className="hero-badge">
-                  <span>🚀 Launch Your Career</span>
-                </div> */}
+                <div className="hero-badge">
+                  <span>🚀 Not Another Course</span>
+                </div>
                 <h1 className="hero-title">
-                  <span className="gradient-text">Transform</span> Your Future
-                  <br />With Tech Excellence
+                  The Dev Dock <span className="gradient-text">LaunchPad</span>
+                  <br />A Career Movement
                 </h1>
                 <p className="hero-description">
-                Ready to build the future? 🚀 Join our elite program, learn directly from industry pros, and get real-world experience in Blockchain, AI, DevOps & Cloud, and Web Development. Let&apos;s launch your tech career together!
+                  Your invitation into a private community of working developers who will train, mentor, and guide you until you land your first tech job. Real projects. Real mentorship. Real results.
                 </p>
-                {/* <p>Don&apos;t miss out on our exclusive plans!</p> */}
+                <div className="hero-features">
+                  <div className="hero-feature">
+                    <i className="fas fa-user-friends"></i>
+                    <span>1:1 Mentorship</span>
+                  </div>
+                  <div className="hero-feature">
+                    <i className="fas fa-laptop-code"></i>
+                    <span>Live Internship Projects</span>
+                  </div>
+                  <div className="hero-feature">
+                    <i className="fas fa-brain"></i>
+                    <span>Mock Interviews</span>
+                  </div>
+                </div>
                 <div className="hero-buttons">
                   <a href="/plans" className="cta-button primary">
-                    <span>Internship Programs</span>
+                    <span>Explore LaunchPad</span>
                     <i className="fas fa-arrow-right"></i>
                   </a>
-                  <a href="#roadmap" className="cta-button secondary">
-                    <span>View Roadmap</span>
+                  <a href="#features" className="cta-button secondary">
+                    <span>How It Works</span>
                   </a>
                 </div>
               </div>
@@ -31,7 +44,7 @@ export default function Hero() {
               <div className="hero-visual">
                 <div className="floating-card card-1">
                   <i className="fas fa-code"></i>
-                  <span>Web Development</span>
+                  <span>Full Stack Development</span>
                 </div>
                 <div className="floating-card card-2">
                   <i className="fas fa-link"></i>
@@ -39,11 +52,11 @@ export default function Hero() {
                 </div>
                 <div className="floating-card card-3">
                   <i className="fas fa-server"></i>
-                  <span> Dev - Ops & Cloud  </span>
+                  <span>DevOps & Cloud</span>
                 </div>
                 <div className="floating-card card-4">
                   <i className="fas fa-robot"></i>
-                  <span>Artificial Intelligence</span>
+                  <span>AI Development</span>
                 </div>
               </div>
             </div>
@@ -57,31 +70,31 @@ export default function Hero() {
         {/* Stats Section */}
         <section className="stats-section">
           <div className="stats-container">
-            <h2 className="stats-heading">Our Success In Numbers</h2>
+            <h2 className="stats-heading">What Sets Us Apart</h2>
             <div className="stats-grid">
               <div className="stat">
-                <div className="stat-value">500+</div>
-                <div className="stat-label">Students Placed</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">50+</div>
-                <div className="stat-label">Partner Companies</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">95%</div>
-                <div className="stat-label">Success Rate</div>
-              </div>
-              <div className="stat">
                 <div className="stat-value">100%</div>
-                <div className="stat-label">Job Placement Support</div>
+                <div className="stat-label">Real Projects</div>
               </div>
               <div className="stat">
-                <div className="stat-value">45+</div>
-                <div className="stat-label">Industry Partners</div>
+                <div className="stat-value">1:1</div>
+                <div className="stat-label">Developer Mentorship</div>
               </div>
               <div className="stat">
-                <div className="stat-value">3x</div>
-                <div className="stat-label">Faster Career Growth</div>
+                <div className="stat-value">Small</div>
+                <div className="stat-label">Curated Batches</div>
+              </div>
+              <div className="stat">
+                <div className="stat-value">Career</div>
+                <div className="stat-label">Focused Approach</div>
+              </div>
+              <div className="stat">
+                <div className="stat-value">Live</div>
+                <div className="stat-label">Internship Simulation</div>
+              </div>
+              <div className="stat">
+                <div className="stat-value">Job</div>
+                <div className="stat-label">Support Network</div>
               </div>
             </div>
           </div>
@@ -313,6 +326,36 @@ export default function Hero() {
             animation-fill-mode: both;
           }
           
+          .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.5s ease 0.25s;
+            animation-fill-mode: both;
+          }
+          
+          .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
+          
+          .hero-feature i {
+            color: var(--primary-color);
+            font-size: 1rem;
+          }
+          
+          .hero-feature span {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+          
           .hero-buttons {
             display: flex;
             gap: 1rem;
@@ -449,64 +492,24 @@ export default function Hero() {
           @media (max-width: 1024px) {
             .hero-container {
               grid-template-columns: 1fr;
-              gap: 3rem;
-              text-align: center;
-            }
-            
-            .hero-left {
-              justify-content: center;
-            }
-            
-            .hero-content {
-              max-width: 800px;
-            }
-            
-            .hero-buttons {
-              justify-content: center;
-            }
-            
-            .hero-visual {
-              height: 400px;
-            }
-          }
-          
-          @media (max-width: 768px) {
-            .hero {
-              padding: 130px 20px 120px;
-            }
-            
-            .hero-title {
-              font-size: 2.5rem;
-            }
-            
-            .hero-description {
-              font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-              flex-direction: column;
-              width: 100%;
-            }
-            
-            .cta-button {
-              width: 100%;
-              justify-content: center;
-            }
-            
-            .hero-container {
-              grid-template-columns: 1fr;
               gap: 2rem;
             }
             
+            .hero-title {
+              font-size: 3.5rem;
+            }
+            
             .hero-content {
-              max-width: 100%;
               text-align: center;
               margin: 0 auto;
             }
             
+            .hero-features {
+              justify-content: center;
+            }
+            
             .hero-buttons {
               justify-content: center;
-              flex-wrap: wrap;
             }
             
             .hero-right {
@@ -514,103 +517,52 @@ export default function Hero() {
             }
           }
           
-          @media (max-width: 480px) {
+          @media (max-width: 768px) {
             .hero {
-              padding: 120px 15px 100px;
-              min-height: calc(100vh - 70px);
-              justify-content: center;
+              padding: 120px 5% 80px;
             }
             
             .hero-title {
               font-size: 2.8rem;
             }
             
-            .hero-badge {
-              margin-top: 1rem;
+            .hero-description {
+              font-size: 1.1rem;
             }
             
-            .hero-badge span {
+            .hero-feature {
+              padding: 0.5rem 0.8rem;
+            }
+            
+            .hero-feature span {
               font-size: 0.8rem;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .hero-title {
+              font-size: 2.2rem;
             }
             
             .hero-description {
               font-size: 1rem;
             }
             
-            .cta-button {
-              padding: 0.8rem 1.5rem;
-              font-size: 0.9rem;
+            .hero-feature {
+              padding: 0.4rem 0.7rem;
             }
             
-            .hero-right {
+            .hero-features {
+              gap: 0.5rem;
+            }
+            
+            .hero-buttons {
+              flex-direction: column;
+              gap: 1rem;
+            }
+            
+            .hero-scroll {
               display: none;
-            }
-            
-            .hero-visual {
-              height: 320px;
-            }
-            
-            .floating-card {
-              padding: 0.8rem;
-            }
-            
-            .floating-card i {
-              font-size: 1rem;
-            }
-            
-            .floating-card span {
-              font-size: 0.8rem;
-            }
-            
-            .card-1 {
-              top: 8%;
-              left: 5%;
-              max-width: 42%;
-            }
-            
-            .card-2 {
-              top: 8%;
-              right: 5%;
-              max-width: 42%;
-            }
-            
-            .card-3 {
-              bottom: 15%;
-              left: 5%;
-              max-width: 42%;
-            }
-            
-            .card-4 {
-              bottom: 15%;
-              right: 5%;
-              max-width: 42%;
-            }
-          }
-          
-          @keyframes float {
-            0% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-15px);
-            }
-            100% {
-              transform: translateY(0px);
-            }
-          }
-          
-          @keyframes scrollLine {
-            0% {
-              height: 0;
-              opacity: 1;
-            }
-            50% {
-              height: 60px;
-              opacity: 1;
-            }
-            100% {
-              height: 60px;
-              opacity: 0;
             }
           }
           
@@ -622,6 +574,36 @@ export default function Hero() {
             to {
               opacity: 1;
               transform: translateY(0);
+            }
+          }
+          
+          @keyframes float {
+            0% {
+              transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+              transform: translateY(-15px) rotate(2deg);
+            }
+            100% {
+              transform: translateY(0px) rotate(0deg);
+            }
+          }
+          
+          @keyframes scrollLine {
+            0% {
+              height: 0;
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            50% {
+              height: 60px;
+              opacity: 1;
+              transform: translateY(0);
+            }
+            100% {
+              height: 0;
+              opacity: 0;
+              transform: translateY(10px);
             }
           }
         `}</style>

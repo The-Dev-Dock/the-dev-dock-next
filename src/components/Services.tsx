@@ -4,39 +4,40 @@ const Services = () => {
   return (
     <section id="services" className="services">
       <div className="section-header-wrapper">
-        <h2>Our Services</h2>
+        <h2>Why The <span className="gradient-text">LaunchPad</span> Works</h2>
       </div>
+      <p className="section-subtitle">Our approach goes beyond standard education to create future tech leaders</p>
       <div className="services-grid">
         <div className="service-card">
-          <i className="fas fa-laptop-code"></i>
-          <h3>Internship Programs</h3>
-          <p>Gain hands-on experience with our industry-focused internship opportunities</p>
+          <i className="fas fa-users"></i>
+          <h3>Community First</h3>
+          <p>Join a private network of working developers who are invested in your success</p>
         </div>
         <div className="service-card">
-          <i className="fas fa-chalkboard-teacher"></i>
-          <h3>Expert Training</h3>
-          <p>Learn from industry experts through our comprehensive training programs</p>
+          <i className="fas fa-project-diagram"></i>
+          <h3>Real Projects</h3>
+          <p>Build actual solutions to real-world problems, not dummy classroom exercises</p>
         </div>
         <div className="service-card">
-          <i className="fas fa-user-graduate"></i>
-          <h3>1-1 Mentorship</h3>
-          <p>Get personalized guidance from experienced professionals</p>
+          <i className="fas fa-user-tie"></i>
+          <h3>1:1 Mentorship</h3>
+          <p>Learn directly from senior developers who guide you through industry challenges</p>
         </div>
 
         <div className="service-card">
+          <i className="fas fa-laptop-code"></i>
+          <h3>Internship Simulation</h3>
+          <p>Experience what it&apos;s like to work in a real tech team with agile practices</p>
+        </div>
+        <div className="service-card">
           <i className="fas fa-comments"></i>
           <h3>Mock Interviews</h3>
-          <p>Prepare for your dream job with our mock interview sessions</p>
+          <p>Practice with real tech interviewers who know what companies are looking for</p>
         </div>
         <div className="service-card">
-          <i className="fas fa-certificate"></i>
-          <h3>Certification</h3>
-          <p>Earn recognized certificates upon program completion</p>
-        </div>
-        <div className="service-card">
-          <i className="fas fa-file-alt"></i>
-          <h3>Resume Building</h3>
-          <p>Create an industry-standard resume that highlights your skills and stands out to recruiters</p>
+          <i className="fas fa-rocket"></i>
+          <h3>Career Launch Support</h3>
+          <p>Get help with resume building, job applications, and interview preparation until you land your first tech job</p>
         </div>
       </div>
       
@@ -50,7 +51,7 @@ const Services = () => {
         .services h2 {
           text-align: center;
           font-size: 2.5rem;
-          margin-bottom: 3rem;
+          margin-bottom: 1rem;
           color: white;
           position: relative;
           display: inline-block;
@@ -66,6 +67,25 @@ const Services = () => {
           height: 3px;
           background: var(--primary-color);
           border-radius: 3px;
+        }
+        
+        .section-subtitle {
+          text-align: center;
+          font-size: 1.2rem;
+          color: var(--light-text);
+          max-width: 700px;
+          margin: 0 auto 3rem;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
+        .section-header-wrapper {
+          text-align: center;
+          margin-bottom: 0.5rem;
         }
         
         .services-grid {

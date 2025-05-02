@@ -5,10 +5,10 @@ const Features = () => {
   return (
     <section id="features" className="features">
       <div className="section-header-wrapper">
-        <h2>What Makes Us <span className="gradient-text">Unique</span></h2>
+        <h2>Not <span className="gradient-text">Another</span> Course</h2>
       </div>
       <div className="features-container">
-        <p className="section-subtitle">Our approach goes beyond standard education to create future tech leaders</p>
+        <p className="section-subtitle">The Dev Dock is a career gateway — a community of developers mentoring the next generation</p>
         
         <div className="features-layout">
           <div className="features-image">
@@ -35,34 +35,34 @@ const Features = () => {
           
           <div className="features-content">
             <div className="feature-card">
-              <div className="feature-number">01</div>
+              <div className="feature-icon"><i className="fas fa-users"></i></div>
               <div className="feature-details">
-                <h3>Industry-Driven Curriculum</h3>
-                <p>Our curriculum is co-designed with tech industry leaders to focus on the skills companies actually need, not just theoretical knowledge. We continuously update our materials based on industry feedback.</p>
+                <h3>Real Developers (not trainers)</h3>
+                <p>Learn from professionals who are actively building products in the industry, not just teachers. Our mentors bring real-world challenges and practical insights straight from tech companies.</p>
               </div>
             </div>
             
             <div className="feature-card">
-              <div className="feature-number">02</div>
+              <div className="feature-icon"><i className="fas fa-project-diagram"></i></div>
               <div className="feature-details">
-                <h3>Project-Based Learning Model</h3>
-                <p>You&apos;ll build real-world projects that tackle genuine business challenges. Our students graduate with portfolios featuring actual solutions to industry problems, not just classroom exercises.</p>
+                <h3>Real Projects (not dummy tasks)</h3>
+                <p>Work on production-quality projects that solve actual problems. Your portfolio will showcase genuine solutions that demonstrate your ability to handle professional-level work.</p>
               </div>
             </div>
             
             <div className="feature-card">
-              <div className="feature-number">03</div>
+              <div className="feature-icon"><i className="fas fa-user-tie"></i></div>
               <div className="feature-details">
-                <h3>Elite Mentor Network</h3>
-                <p>Learn directly from senior developers and tech leaders currently working at top tech companies. Our mentors don&apos;t just teach; they guide you through the same challenges they face daily.</p>
+                <h3>Personalized Mentorship (not generic advice)</h3>
+                <p>Receive guidance tailored to your specific skills, goals, and learning style. Our 1:1 mentorship ensures you get exactly the support you need to progress quickly.</p>
               </div>
             </div>
             
             <div className="feature-card">
-              <div className="feature-number">04</div>
+              <div className="feature-icon"><i className="fas fa-rocket"></i></div>
               <div className="feature-details">
-                <h3>Guaranteed Placement Support</h3>
-                <p>Our dedicated career team works with you until you&apos;re hired. We maintain exclusive relationships with hiring partners who prioritize our graduates, giving you a clear advantage in the job market.</p>
+                <h3>Industry Launch Support</h3>
+                <p>From resume reviews to mock interviews and job application strategy, we support you until you land your first tech role. Our network of industry connections gives you an advantage in the job market.</p>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Features = () => {
         
         <div className="view-courses-container">
           <Link href="/plans" className="view-courses-button">
-            <span>View Internship Programs</span>
+            <span>Join The LaunchPad</span>
             <i className="fas fa-arrow-right"></i>
           </Link>
         </div>
@@ -249,24 +249,26 @@ const Features = () => {
         }
         
         .hex4 {
-          bottom: 5%;
-          left: 20%;
-          animation: float 6s ease-in-out infinite;
+          bottom: 0;
+          left: 25%;
+          animation: float 8s ease-in-out infinite;
           animation-delay: 1.5s;
         }
         
         .hex5 {
-          bottom: 5%;
-          right: 20%;
-          animation: float 7s ease-in-out infinite;
+          bottom: 0;
+          right: 25%;
+          animation: float 6s ease-in-out infinite;
           animation-delay: 2s;
         }
         
         .hexagon:hover {
-          transform: scale(1.1);
+          transform: translateY(-10px);
           background: rgba(255, 255, 255, 0.1);
-          border-color: var(--primary-color);
-          z-index: 10;
+        }
+        
+        .hexagon:hover i {
+          transform: scale(1.2);
         }
         
         .features-content {
@@ -278,32 +280,42 @@ const Features = () => {
         .feature-card {
           display: flex;
           gap: 1.5rem;
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 15px;
-          padding: 1.5rem;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          transition: all 0.3s ease;
+          align-items: flex-start;
         }
         
-        .feature-card:hover {
-          transform: translateX(10px);
-          background: rgba(255, 255, 255, 0.07);
-          border-color: rgba(37, 99, 235, 0.3);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          min-width: 60px;
+          background: rgba(37, 99, 235, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .feature-icon i {
+          font-size: 1.5rem;
+          color: var(--primary-color);
         }
         
         .feature-number {
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: rgba(37, 99, 235, 0.2);
+          font-size: 3rem;
+          font-weight: 800;
+          color: rgba(255, 255, 255, 0.1);
           line-height: 1;
-          min-width: 60px;
+          min-width: 70px;
+        }
+        
+        .feature-details {
+          flex: 1;
         }
         
         .feature-details h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
           color: white;
-          margin-bottom: 0.8rem;
-          font-size: 1.3rem;
         }
         
         .feature-details p {
@@ -317,7 +329,7 @@ const Features = () => {
             transform: translateY(0);
           }
           50% {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
           }
           100% {
             transform: translateY(0);
@@ -325,121 +337,6 @@ const Features = () => {
         }
         
         @media (max-width: 1200px) {
-          .features {
-            padding: 6rem 5%;
-          }
-          
-          .features-layout {
-            gap: 3rem;
-          }
-          
-          .hexagon-grid {
-            width: 350px;
-            height: 380px;
-          }
-          
-          .hexagon {
-            width: 80px;
-            height: 90px;
-          }
-          
-          .hex2 {
-            top: 40%;
-            left: 0;
-          }
-          
-          .hex3 {
-            top: 40%;
-            right: 0;
-          }
-          
-          .hex4 {
-            bottom: 5%;
-            left: 20%;
-          }
-          
-          .hex5 {
-            bottom: 5%;
-            right: 20%;
-          }
-        }
-        
-        @media (max-width: 992px) {
-          .features-layout {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-          }
-          
-          .features-image {
-            order: 2;
-          }
-          
-          .features-content {
-            order: 1;
-          }
-          
-          .hexagon-grid {
-            width: 450px;
-            height: 420px;
-          }
-          
-          .hexagon {
-            width: 90px;
-            height: 100px;
-          }
-          
-          .hex1 {
-            top: 0;
-          }
-          
-          .hex2 {
-            top: 40%;
-            left: 5%;
-          }
-          
-          .hex3 {
-            top: 40%;
-            right: 5%;
-          }
-          
-          .hex4 {
-            bottom: 5%;
-            left: 25%;
-          }
-          
-          .hex5 {
-            bottom: 5%;
-            right: 25%;
-          }
-        }
-        
-        @media (max-width: 768px) {
-          .features {
-            padding: 5rem 5% 4rem;
-          }
-          
-          h2 {
-            font-size: 2.2rem;
-          }
-          
-          .section-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-          }
-          
-          .feature-card {
-            padding: 1.2rem;
-          }
-          
-          .feature-number {
-            font-size: 2rem;
-            min-width: 50px;
-          }
-          
-          .feature-details h3 {
-            font-size: 1.2rem;
-          }
-          
           .features-layout {
             grid-template-columns: 1fr;
             gap: 2rem;
@@ -448,55 +345,57 @@ const Features = () => {
           .features-image {
             display: none;
           }
-          
-          .view-courses-container {
-            margin-top: 3rem;
-          }
-          
-          .view-courses-button {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-          }
         }
         
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           .features {
-            padding: 4rem 5% 3rem;
+            padding: 5rem 5%;
           }
           
           h2 {
-            font-size: 1.8rem;
-          }
-          
-          .section-subtitle {
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
           }
           
           .feature-card {
             flex-direction: column;
-            gap: 0.8rem;
-            padding: 1.2rem;
+            gap: 1rem;
+            align-items: flex-start;
           }
           
-          .feature-number {
-            font-size: 1.8rem;
+          .feature-icon {
+            margin-bottom: 0.5rem;
           }
           
-          .view-courses-button {
-            padding: 0.7rem 1.3rem;
-            font-size: 0.9rem;
+          .feature-details h3 {
+            font-size: 1.3rem;
           }
         }
         
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
+        @media (max-width: 480px) {
+          .features {
+            padding: 4rem 5%;
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
+          
+          h2 {
+            font-size: 2rem;
+          }
+          
+          .section-subtitle {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+          }
+          
+          .feature-details h3 {
+            font-size: 1.2rem;
+          }
+          
+          .feature-details p {
+            font-size: 0.95rem;
+          }
+          
+          .view-courses-button {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
